@@ -1,0 +1,24 @@
+---
+apiVersion: config.kubernetes.io/v1
+kind: ResourceList
+metadata:
+  name: krm-function-input
+functionConfig:
+  apiVersion: generators.kustomize.aabouzaid.com/v1alpha1
+  kind: Merger
+  metadata:
+    name: merge
+  spec:
+    resources:
+    - name: my-envs
+      input:
+        method: overlay
+        files:
+          sources:
+          - example/input/dev.yaml
+          - example/input/stage.yaml
+          destination: example/input/common.yaml
+      merge:
+        strategy: combine
+      output:
+        format: raw

@@ -1,0 +1,104 @@
+#
+# This file is auto-generated, DO NOT EDIT MANUALLY!
+#
+---
+apiVersion: config.kubernetes.io/v1alpha1
+kind: KRMFunctionDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.13.0
+  name: mergers.generators.kustomize.aabouzaid.com
+spec:
+  group: generators.kustomize.aabouzaid.com
+  names:
+    kind: Merger
+    listKind: MergerList
+    plural: mergers
+    singular: merger
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              resources:
+                items:
+                  properties:
+                    input:
+                      properties:
+                        files:
+                          properties:
+                            destination:
+                              type: string
+                            sources:
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - destination
+                          - sources
+                          type: object
+                        method:
+                          enum:
+                          - overlay
+                          - patch
+                          type: string
+                      required:
+                      - files
+                      - method
+                      type: object
+                    merge:
+                      properties:
+                        strategy:
+                          enum:
+                          - append
+                          - combine
+                          - replace
+                          type: string
+                      required:
+                      - strategy
+                      type: object
+                    name:
+                      type: string
+                    output:
+                      properties:
+                        format:
+                          enum:
+                          - raw
+                          type: string
+                      required:
+                      - format
+                      type: object
+                  required:
+                  - input
+                  - merge
+                  - name
+                  - output
+                  type: object
+                type: array
+                x-kubernetes-list-map-keys:
+                - name
+                x-kubernetes-list-type: map
+            required:
+            - resources
+            type: object
+        required:
+        - metadata
+        - spec
+        type: object
+    served: true
+    storage: true
