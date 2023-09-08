@@ -1,28 +1,3 @@
-# Merger (WIP)
-
-A Kustomize generator plugin to merge YAML files seamlessly (schemaless merge).
-
-
-## Why
-
-TBA
-
-
-## Use Cases
-
-TBA
-
-
-## Build
-
-```sh
-go build -o 'dist/merger' .
-```
-
-
-## Example
-
-```yaml
 ---
 apiVersion: generators.kustomize.aabouzaid.com/v1alpha1
 kind: Merger
@@ -45,4 +20,3 @@ spec:
     output:
       # Available options: raw.
       format: raw
-```
