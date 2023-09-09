@@ -1,3 +1,4 @@
+// The main logic for Merger plugin.
 package merger
 
 import (
@@ -10,6 +11,7 @@ import (
 	"sigs.k8s.io/kustomize/kyaml/yaml"
 )
 
+// setMergeStrategy sets "mergo" merging strategy, mainly for merging arrays.
 func (r *mergerResource) setMergeStrategy() {
 	switch r.Merge.Strategy {
 	case Replace:
@@ -37,6 +39,7 @@ func (r *mergerResource) setInputFilesPatch() {
 	r.Input.items = append(r.Input.items, r.Input.Files)
 }
 
+// setInputFiles determines the input file sources based on the input method (Overlay or Patch).
 func (r *mergerResource) setInputFiles() error {
 	switch r.Input.Method {
 	case Overlay:
@@ -47,6 +50,7 @@ func (r *mergerResource) setInputFiles() error {
 	return nil
 }
 
+// merge performs the actual merging of configuration files from resourceInputFiles sources.
 func (r *mergerResource) merge(rfs []resourceInputFiles) {
 	for _, rf := range rfs {
 		k := koanf.New(".")
@@ -58,10 +62,11 @@ func (r *mergerResource) merge(rfs []resourceInputFiles) {
 		for _, srcFile := range rf.Sources {
 			err := k.Load(koanfFile.Provider(srcFile), koanfYaml.Parser(),
 				koanf.WithMergeFunc(func(src, dst map[string]interface{}) error {
-					mergo.Merge(&dst, src, mergo.WithOverride, r.Merge.config)
+					if err := mergo.Merge(&dst, src, mergo.WithOverride, r.Merge.config); err != nil {
+						log.Fatalf("Error merging config: %v", err)
+					}
 					return nil
 				}))
-
 			if err != nil {
 				log.Fatalf("Error loading config: %v", err)
 			}
