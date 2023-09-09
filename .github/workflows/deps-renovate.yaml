@@ -1,4 +1,4 @@
-name: Deps - Renovate
+name: Dependency - Renovate
 
 on:
   pull_request:
