@@ -1,10 +1,13 @@
-name: Deps - Renovate
+name: Dependency - Renovate
 
 on:
   pull_request:
     paths:
     - '.github/renovate.json5'
   workflow_dispatch: { }
+
+permissions:
+  contents: read
 
 jobs:
   check:
