@@ -1,3 +1,8 @@
+[![Go CI](https://github.com/aabouzaid/kustomize-plugin-merger/actions/workflows/go-ci.yml/badge.svg)](https://github.com/aabouzaid/kustomize-plugin-merger/actions/workflows/go-ci.yml)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/aabouzaid/kustomize-plugin-merger/badge)](https://securityscorecards.dev/viewer/?uri=github.com/aabouzaid/kustomize-plugin-merger)
+[![go.mod](https://img.shields.io/github/go-mod/go-version/aabouzaid/kustomize-plugin-merger)](go.mod)
+[![License](https://img.shields.io/github/license/aabouzaid/kustomize-plugin-merger)](https://github.com/aabouzaid/kustomize-plugin-merger/blob/main/LICENSE)
+
 # Merger (WIP)
 
 A Kustomize generator plugin to merge YAML files seamlessly (schemaless merge).
