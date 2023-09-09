@@ -15,3 +15,7 @@ schema.generate:
 	sed -e 's/CustomResourceDefinition/KRMFunctionDefinition/g' \
     -e 's|apiextensions.k8s.io/v1|config.kubernetes.io/v1alpha1|g' \
     -i  pkg/merger/schema/generators.kustomize.aabouzaid.com_mergers.yaml
+
+.PHONY: go.format
+go.format:
+	gofumpt -l -w .
