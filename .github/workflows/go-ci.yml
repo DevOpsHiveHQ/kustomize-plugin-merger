@@ -1,0 +1,89 @@
+name: Go CI
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint Code
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-go@v4
+      with:
+        go-version: '1.21'
+        cache: false
+    - name: Run GolangCI Linter
+      uses: golangci/golangci-lint-action@v3
+      with:
+        version: v1.54
+
+  build:
+    name: Build Artifacts
+    needs: ["lint"]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-go@v4
+      with:
+        go-version: '1.21'
+        cache: false
+    - name: Setup Golang Caches
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cache/go-build
+          ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
+    - name: Run GoReleaser
+      uses: goreleaser/goreleaser-action@v4
+      with:
+        distribution: goreleaser
+        version: latest
+        args: release --clean --snapshot
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Cache Artifacts
+      uses: actions/cache@v3
+      with:
+        path: dist
+        key: dist
+
+  upload:
+    name: Upload Artifacts - ${{ matrix.os.name }}
+    needs: ["build"]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+        - name: Linux
+          id: linux
+        - name: MacOS
+          id: darwin
+        - name: Windows
+          id: windows
+    steps:
+    - name: Get Cached Artifacts
+      uses: actions/cache@v3
+      with:
+        path: dist
+        key: dist
+    # The upload-artifact action doesn't support multi upload 🤷‍♂️!
+    - name: Upload Artifacts - AMD
+      uses: actions/upload-artifact@v3
+      with:
+        name: merger-${{ matrix.os.id }}-amd
+        path: dist/kustomize-plugin-merger_${{ matrix.os.id }}_amd*/kustomize-plugin-merger*
+    - name: Upload Artifacts - ARM
+      uses: actions/upload-artifact@v3
+      with:
+        name: merger-${{ matrix.os.id }}-arm
+        path: dist/kustomize-plugin-merger_${{ matrix.os.id }}_arm*/kustomize-plugin-merger*
