@@ -1,0 +1,41 @@
+before:
+  hooks:
+    - go mod download
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm64
+upx:
+  - enabled: true
+    compress: "1"
+archives:
+  - format_overrides:
+      - goos: windows
+        format: zip
+dockers:
+  - image_templates:
+    - "ghcr.io/aabouzaid/kustomize-generator-merger:latest"
+    - "ghcr.io/aabouzaid/kustomize-generator-merger:{{ .Major }}"
+    - "ghcr.io/aabouzaid/kustomize-generator-merger:{{ .Major }}.{{ .Minor }}"
+    - "ghcr.io/aabouzaid/kustomize-generator-merger:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
+    build_flag_templates:
+    - "--pull"
+    # OCI annotations: https://github.com/opencontainers/image-spec/blob/main/annotations.md
+    - "--label=org.opencontainers.image.created={{ .Date }}"
+    - "--label=org.opencontainers.image.name={{ .ProjectName }}"
+    - "--label=org.opencontainers.image.revision={{ .FullCommit }}"
+    - "--label=org.opencontainers.image.version={{ .Version }}"
+    - "--label=org.opencontainers.image.source={{ .GitURL }}"
+release:
+  github: {}
+  name_template: "{{ .Version }}"
+  prerelease: auto
+  mode: append
+changelog:
+  skip: true
