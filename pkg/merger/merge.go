@@ -5,9 +5,9 @@ import (
 	"log"
 
 	"dario.cat/mergo"
-	"github.com/knadh/koanf"
 	koanfYaml "github.com/knadh/koanf/parsers/yaml"
 	koanfFile "github.com/knadh/koanf/providers/file"
+	"github.com/knadh/koanf/v2"
 	"sigs.k8s.io/kustomize/kyaml/yaml"
 )
 
