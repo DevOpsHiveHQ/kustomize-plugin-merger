@@ -1,3 +1,6 @@
+// The types of the merger package.
+// KubeBuilder markers are used to auto-generate OpenAPI schema for the plugin.
+//
 // +groupName=generators.kustomize.aabouzaid.com
 // +versionName=v1alpha1
 // +kubebuilder:validation:Required
@@ -10,12 +13,14 @@ import (
 	"sigs.k8s.io/kustomize/kyaml/yaml"
 )
 
+// Merger manifest configuration.
 const (
 	ResourceGroup   string = "generators.kustomize.aabouzaid.com"
 	ResourceVersion string = "v1alpha1"
 	ResourceKind    string = "Merger"
 )
 
+// Merger manifest body.
 type Merger struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata"`
@@ -52,6 +57,7 @@ type resourceInputFiles struct {
 // +kubebuilder:validation:Enum=overlay;patch
 type resourceInputMethod string
 
+// Merger resource input method available options.
 const (
 	Overlay resourceInputMethod = "overlay"
 	Patch   resourceInputMethod = "patch"
@@ -71,6 +77,7 @@ type resourceInput struct {
 // +kubebuilder:validation:Enum=append;combine;replace
 type resourceMergeStrategy string
 
+// Merger resource merge strategy available options.
 // TODO: Support combine lists by named key.
 const (
 	Append  resourceMergeStrategy = "append"
