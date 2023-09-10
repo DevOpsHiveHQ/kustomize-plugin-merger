@@ -45,6 +45,7 @@ func (r *mergerResource) setInputFilesOverlay() {
 
 func (r *mergerResource) setInputFilesPatch() {
 	r.setInputFilesRoot()
+	r.Input.Files.Destination = r.Input.Files.Root + r.Input.Files.Destination
 	for index, inputFileSource := range r.Input.Files.Sources {
 		r.Input.Files.Sources[index] = r.Input.Files.Root + inputFileSource
 	}

@@ -17,10 +17,10 @@ A Kustomize generator plugin to merge YAML files seamlessly for real-world use c
 - [Why](#why)
 - [Features](#features)
 - [Options](#options)
-- [Use cases](#use-cases)
+- [Common use cases](#common-use-cases)
   - [1. Generate multiple manifests from a single base](#1-generate-multiple-manifests-from-a-single-base)
   - [2. Merge lists in manifests without schema or a unique identifier](#2-merge-lists-in-manifests-without-schema-or-a-unique-identifier)
-  - [3. Structure long manifests into smaller ones](#3-structure-long-manifests-into-smaller-ones)
+  - [3. Organize long manifests into smaller ones](#3-organize-long-manifests-into-smaller-ones)
 - [TO-DO](#to-do)
 - [Project status](#project-status)
 - [Contributing](#contributing)
@@ -82,7 +82,7 @@ spec:
       # - Patch: Produce a single output by merging all sources together then with the destination.
       method: overlay
       files:
-        # The same as in the KRM container above.
+        # The same as in the KRM container above, omit it if Exec KRM is used.
         root: /mnt
         sources:
         - src01.yaml
@@ -100,7 +100,7 @@ spec:
 ```
 
 
-## Use cases
+## Common use cases
 
 This section shows a couple of use cases where Merger can help.
 
@@ -119,10 +119,10 @@ It's possible to do that using the merge strategy `append` in Merger (later on, 
 
 [Use case full example](./examples/manifest-lists-without-schema/README.md).
 
-### 3. Structure long manifests into smaller ones
+### 3. Organize long manifests into smaller ones
 
 In some use cases (e.g., [Crossplane Compositions](https://docs.crossplane.io/latest/concepts/compositions/)),
-you could have a long YAML manifest, and it's hard to read through it. You can split that file
+you could have a really long YAML manifest, and it's hard to read. You can split that file
 and use the Merger `patch` input method to make it a single manifest again.
 
 [Use case full example](./examples/long-omni-manifest/README.md).
