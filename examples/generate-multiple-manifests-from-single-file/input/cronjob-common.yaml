@@ -1,0 +1,23 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: this-will-be-applied-to-multiple-cronjobs
+spec:
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: my-app
+            image: my-app
+            # The command will be updated via Merger.
+            command: []
+            imagePullPolicy: Always
+          restartPolicy: Never
+          imagePullSecrets:
+          - name: docker-registry
+  # The schedule will be updated via Merger.
+  schedule: ""
+  successfulJobsHistoryLimit: 0
