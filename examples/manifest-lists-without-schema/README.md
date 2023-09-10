@@ -86,7 +86,7 @@ spec:
     input:
       method: overlay
       files:
-        # The same as in the KRM container above.
+        # The same as in the KRM container above, omit it if Exec KRM is used.
         root: /mnt
         sources:
         - input/iam-policy-src.yaml
