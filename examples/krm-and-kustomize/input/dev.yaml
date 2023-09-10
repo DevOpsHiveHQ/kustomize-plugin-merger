@@ -1,0 +1,8 @@
+metadata:
+  name: dev
+spec:
+  containers:
+  - name: dev
+    image: dev:1.0.0
+    ports:
+    - containerPort: 80

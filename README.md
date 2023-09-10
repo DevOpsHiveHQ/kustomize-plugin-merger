@@ -21,7 +21,7 @@ A Kustomize generator plugin to merge YAML files seamlessly for real-world use c
   - [1. Generate multiple manifests from a single base](#1-generate-multiple-manifests-from-a-single-base)
   - [2. Merge lists in manifests without schema or a unique identifier](#2-merge-lists-in-manifests-without-schema-or-a-unique-identifier)
   - [3. Structure long manifests into smaller ones](#3-structure-long-manifests-into-smaller-ones)
-- [TODO](#todo)
+- [TO-DO](#to-do)
 - [Project status](#project-status)
 - [Contributing](#contributing)
 - [License](#license)
@@ -36,7 +36,9 @@ Kustomize's default patch strategy for the lists (arrays) is `replace`, and to c
 for the Kubernetes `Custom Resource`, you must provide the OpenAPI schema of that custom resource,
 which is only helpful if the lists of that CR have a unique id.
 
-For more details, please read:
+Many people are asking for such functionalities as [easy merging CRs](https://stackoverflow.com/q/73655002/4547221),
+[creating a ConfigMap from arbitrary YAML files](https://stackoverflow.com/q/74547569/4547221),
+and for more details on the challenge of providing OpenAPI schema to merge files, please read the following post:
 [Set OpenAPI patch strategy for Kubernetes Custom Resources](https://tech.aabouzaid.com/2022/11/set-openapi-patch-strategy-for-kubernetes-custom-resources-kustomize.html).
 
 
@@ -44,7 +46,8 @@ For more details, please read:
 
 - Generate multiple resources/manifests from a single base without copying the resources multiple times.
 - Merge any manifests (even CustomResources) without needing their OpenAPI schema.
-- Merge manifests with a list of maps without a unique identifier (when using `x-kubernetes-patch-merge-key` is not possible).
+- Merge manifests with a list of maps without a unique identifier
+  (when using `x-kubernetes-patch-merge-key` is not possible).
 - Merge YAML files with different merge strategies (StrategicMerge).
 - Merge applications configuration YAML files into a ConfigMap or Secret (WIP).
 
@@ -57,6 +60,19 @@ apiVersion: generators.kustomize.aabouzaid.com/v1alpha1
 kind: Merger
 metadata:
   name: merge
+    annotations:
+      # Containerized KRM function.
+      config.kubernetes.io/function: |
+        container:
+          image: ghcr.io/aabouzaid/kustomize-generator-merger
+          mounts:
+          - type: bind
+            src: ./
+            dst: /mnt
+      # Exec KRM functions.
+      # config.kubernetes.io/function: |
+      # exec:
+      #   path: ./kustomize-plugin-merger
 spec:
   resources:
   - name: example
@@ -66,6 +82,8 @@ spec:
       # - Patch: Produce a single output by merging all sources together then with the destination.
       method: overlay
       files:
+        # The same as in the KRM container above.
+        root: /mnt
         sources:
         - src01.yaml
         - src02.yaml
@@ -88,7 +106,8 @@ This section shows a couple of use cases where Merger can help.
 
 ### 1. Generate multiple manifests from a single base
 
-In this case, you have multiple `CronJobs`, all of them share the same body, but each one has a different command or other config.
+In this case, you have multiple `CronJobs`, all of them share the same body,
+but each one has a different command or other config.
 
 [Use case full example](./examples/generate-multiple-manifests/README.md).
 
@@ -96,7 +115,7 @@ In this case, you have multiple `CronJobs`, all of them share the same body, but
 
 Currently, in Kustomize, it's not possible to merge resources without a unique identifier, even with Open API schema.
 
-It's possible to do that using the merge strategy `append` in Merger (later on, `combine` will also be supported).
+It's possible to do that using the merge strategy `append` in Merger (later on, `combineWithKey` will also be supported).
 
 [Use case full example](./examples/merge-lists-without-schema/README.md).
 
@@ -109,15 +128,16 @@ and use the Merger `patch` input method to make it a single manifest again.
 [Use case full example](./examples/structure-long-manifests/README.md).
 
 
-## TODO
+## TO-DO
 
 - Support `ConfigMap` or `Secret` as an output.
 - Support `combine` merge strategy with an identifier key (similar to `x-kubernetes-patch-merge-key`).
+- Provide better docs for Merger options.
 
 
 ## Project status
 
-Please note that this project is still under development and could be breaking changes,
+Please note that this project is still under development and could have breaking changes,
 but it will follow the SemVer convention.
 
 
@@ -130,4 +150,4 @@ or [create a PR](https://github.com/aabouzaid/kustomize-plugin-merger/pulls).
 
 ## License
 
-This is open-source software licensed using the Apache License 2.0. Please see [LICENSE](LICENSE) for details.
+Merger is an open-source software licensed using the Apache License 2.0. Please see [LICENSE](LICENSE) for details.

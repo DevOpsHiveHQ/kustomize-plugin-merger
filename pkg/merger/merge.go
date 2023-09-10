@@ -29,13 +29,16 @@ func (r *mergerResource) setInputFilesOverlay() {
 	for _, inputFileSource := range r.Input.Files.Sources {
 		r.Input.items = append(r.Input.items,
 			resourceInputFiles{
-				Sources:     []string{inputFileSource},
-				Destination: r.Input.Files.Destination,
+				Sources:     []string{r.Input.Files.Root + inputFileSource},
+				Destination: r.Input.Files.Root + r.Input.Files.Destination,
 			})
 	}
 }
 
 func (r *mergerResource) setInputFilesPatch() {
+	for index, inputFileSource := range r.Input.Files.Sources {
+		r.Input.Files.Sources[index] = r.Input.Files.Root + inputFileSource
+	}
 	r.Input.items = append(r.Input.items, r.Input.Files)
 }
 
