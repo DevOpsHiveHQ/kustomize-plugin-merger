@@ -18,7 +18,7 @@ jobs:
       pull-requests: write
     steps:
     - name: Run Release Please
-      uses: GoogleCloudPlatform/release-please-action@v3
+      uses: GoogleCloudPlatform/release-please-action@ca6063f4ed81b55db15b8c42d1b6f7925866342d # v3
       id: release
       with:
         release-type: go
