@@ -1,0 +1,48 @@
+name: Go - Pre Release
+
+on:
+  push:
+    branches:
+    - main
+
+permissions:
+  contents: read
+
+jobs:
+  pre-release:
+    name: Pre Release
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: write
+      pull-requests: write
+    steps:
+    - name: Run Release Please
+      uses: GoogleCloudPlatform/release-please-action@ca6063f4ed81b55db15b8c42d1b6f7925866342d # v3
+      id: release
+      with:
+        release-type: go
+        package-name: kustomize-plugin-merger
+        changelog-types: |
+          [
+            {
+              "type": "feat",
+              "section": "Features",
+              "hidden": false
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes",
+              "hidden": false
+            },
+            {
+              "type": "docs",
+              "section": "Documentation",
+              "hidden": false
+            },
+            {
+              "type": "ci",
+              "section": "Continuous Integration",
+              "hidden": false
+            }
+          ]
