@@ -7,11 +7,11 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/aabouzaid/kustomize-plugin-merger/pulls)
 
 <!-- omit in toc -->
-# Merger
+# 🔀 Merger 🔀
 
 A Kustomize generator plugin to merge YAML files seamlessly for real-world use cases.
 
-**Merger** provides schemaless merge with different merge strategies (StrategicMerge) 🔀.
+**Merger** provides schemaless merge with different merge strategies (StrategicMerge).
 
 
 - [Why](#why)
@@ -72,7 +72,7 @@ metadata:
       # Exec KRM functions.
       # config.kubernetes.io/function: |
       # exec:
-      #   path: ./kustomize-plugin-merger
+      #   path: kustomize-plugin-merger
 spec:
   resources:
   - name: example
@@ -106,10 +106,10 @@ This section shows a couple of use cases where Merger can help.
 
 ### 1. Generate multiple manifests from a single base
 
-In this case, you have multiple `CronJobs`, all of them share the same body,
-but each one has a different command or other config.
+In this case, you have multiple `CronJobs`, all of which share the same body,
+but each has a different command or other config.
 
-[Use case full example](./examples/generate-multiple-manifests/README.md).
+[Use case full example](./examples/generate-multiple-manifests-from-single-file/README.md).
 
 ### 2. Merge lists in manifests without schema or a unique identifier
 

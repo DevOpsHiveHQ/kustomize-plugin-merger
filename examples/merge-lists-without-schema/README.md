@@ -1,4 +1,11 @@
+<!-- omit in toc -->
 # Example - Append CustomResources lists without schema
+
+- [Use case](#use-case)
+- [Input](#input)
+- [Manifest](#manifest)
+- [Build](#build)
+- [Output](#output)
 
 ## Use case
 
@@ -72,7 +79,7 @@ metadata:
     # Exec KRM functions.
     # config.kubernetes.io/function: |
     # exec:
-    #   path: ./kustomize-plugin-merger
+    #   path: kustomize-plugin-merger
 spec:
   resources:
   - name: my-iam-policy

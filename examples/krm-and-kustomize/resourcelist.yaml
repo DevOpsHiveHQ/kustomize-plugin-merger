@@ -20,7 +20,7 @@ functionConfig:
       # Exec KRM functions.
       # config.kubernetes.io/function: |
       # exec:
-      #   path: ./kustomize-plugin-merger
+      #   path: kustomize-plugin-merger
   spec:
     resources:
     - name: my-envs

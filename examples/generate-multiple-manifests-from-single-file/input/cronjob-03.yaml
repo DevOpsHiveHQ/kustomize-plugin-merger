@@ -1,0 +1,16 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob03
+spec:
+  schedule: '0 3 * * *'
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: my-app
+            command:
+            - echo
+            - cronjob03

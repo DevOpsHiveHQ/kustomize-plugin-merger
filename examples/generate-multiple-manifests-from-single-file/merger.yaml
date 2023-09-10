@@ -18,16 +18,18 @@ metadata:
     #   path: kustomize-plugin-merger
 spec:
   resources:
-  - name: my-iam-policy
+  - name: my-cronjobs
     input:
       method: overlay
       files:
         # The same as in the KRM container above.
         root: /mnt
         sources:
-        - input/iam-policy-src.yaml
-        destination: input/iam-policy-dst.yaml
+        - input/cronjob-01.yaml
+        - input/cronjob-02.yaml
+        - input/cronjob-03.yaml
+        destination: input/cronjob-common.yaml
     merge:
-      strategy: append
+      strategy: combine
     output:
       format: raw
