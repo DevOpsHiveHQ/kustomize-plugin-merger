@@ -1,0 +1,67 @@
+name: Go - Release
+
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch: { }
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    name: Release
+    permissions:
+      contents: write
+      packages: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+    - uses: google-github-actions/release-please-action@ca6063f4ed81b55db15b8c42d1b6f7925866342d # v3
+      id: release
+      with:
+        release-type: go
+        package-name: kustomize-plugin-merger
+        changelog-types: |
+          [
+            {
+              "type": "feat",
+              "section": "Features",
+              "hidden": false
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes",
+              "hidden": false
+            },
+            {
+              "type": "docs",
+              "section": "Documentation",
+              "hidden": false
+            },
+            {
+              "type": "ci",
+              "section": "Continuous Integration",
+              "hidden": false
+            }
+          ]
+    - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+      if: ${{ steps.release.outputs.release_created }}
+    - uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe # v4
+      if: ${{ steps.release.outputs.release_created }}
+      with:
+        go-version: '1.21'
+    - name: Login to GitHub Container Registry
+      if: ${{ steps.release.outputs.release_created }}
+      uses: docker/login-action@465a07811f14bebb1938fbed4728c6a1ff8901fc # v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Install GoReleaser
+      if: ${{ steps.release.outputs.release_created }}
+      uses: goreleaser/goreleaser-action@5fdedb94abba051217030cc86d4523cf3f02243d # v4
+      with:
+        version: latest
+        args: release --clean
