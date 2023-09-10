@@ -3,6 +3,7 @@ package merger
 
 import (
 	"log"
+	"strings"
 
 	"dario.cat/mergo"
 	koanfYaml "github.com/knadh/koanf/parsers/yaml"
@@ -25,7 +26,14 @@ func (r *mergerResource) setMergeStrategy() {
 	}
 }
 
+func (r *mergerResource) setInputFilesRoot() {
+	if r.Input.Files.Root != "" {
+		r.Input.Files.Root = strings.TrimSuffix(r.Input.Files.Root, "/") + "/"
+	}
+}
+
 func (r *mergerResource) setInputFilesOverlay() {
+	r.setInputFilesRoot()
 	for _, inputFileSource := range r.Input.Files.Sources {
 		r.Input.items = append(r.Input.items,
 			resourceInputFiles{
@@ -36,6 +44,7 @@ func (r *mergerResource) setInputFilesOverlay() {
 }
 
 func (r *mergerResource) setInputFilesPatch() {
+	r.setInputFilesRoot()
 	for index, inputFileSource := range r.Input.Files.Sources {
 		r.Input.Files.Sources[index] = r.Input.Files.Root + inputFileSource
 	}
