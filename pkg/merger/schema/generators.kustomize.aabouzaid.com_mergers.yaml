@@ -20,6 +20,7 @@ spec:
   - name: v1alpha1
     schema:
       openAPIV3Schema:
+        description: Merger manifest.
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -43,6 +44,8 @@ spec:
                         files:
                           properties:
                             destination:
+                              type: string
+                            root:
                               type: string
                             sources:
                               items:

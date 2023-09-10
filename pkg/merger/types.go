@@ -20,7 +20,7 @@ const (
 	ResourceKind    string = "Merger"
 )
 
-// Merger manifest body.
+// Merger manifest.
 type Merger struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata"`
@@ -49,6 +49,8 @@ type mergerResource struct {
 //
 
 type resourceInputFiles struct {
+	// +optional
+	Root        string   `yaml:"root" json:"root"`
 	Sources     []string `yaml:"sources" json:"sources"`
 	Destination string   `yaml:"destination" json:"destination"`
 }

@@ -1,0 +1,8 @@
+metadata:
+  name: stage
+spec:
+  containers:
+  - name: stage
+    image: stage:1.0.0
+    ports:
+    - containerPort: 80

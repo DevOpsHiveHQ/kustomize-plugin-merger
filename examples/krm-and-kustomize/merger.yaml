@@ -1,0 +1,34 @@
+---
+apiVersion: generators.kustomize.aabouzaid.com/v1alpha1
+kind: Merger
+metadata:
+  name: merge
+  annotations:
+    # Containerized KRM function.
+    config.kubernetes.io/function: |
+      container:
+        image: ghcr.io/aabouzaid/kustomize-generator-merger
+        mounts:
+        - type: bind
+          src: ./
+          dst: /mnt
+    # Exec KRM functions.
+    # config.kubernetes.io/function: |
+    # exec:
+    #   path: ./kustomize-plugin-merger
+spec:
+  resources:
+  - name: my-envs
+    input:
+      method: overlay
+      files:
+        # The same as in the KRM container above.
+        root: /mnt
+        sources:
+        - input/dev.yaml
+        - input/stage.yaml
+        destination: input/base.yaml
+    merge:
+      strategy: append
+    output:
+      format: raw
