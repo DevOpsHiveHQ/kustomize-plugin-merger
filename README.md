@@ -109,7 +109,7 @@ This section shows a couple of use cases where Merger can help.
 In this case, you have multiple `CronJobs`, all of which share the same body,
 but each has a different command or other config.
 
-[Use case full example](./examples/generate-multiple-manifests-from-single-file/README.md).
+[Use case full example](./examples/multiple-manifests-from-single-file/README.md).
 
 ### 2. Merge lists in manifests without schema or a unique identifier
 
@@ -117,7 +117,7 @@ Currently, in Kustomize, it's not possible to merge resources without a unique i
 
 It's possible to do that using the merge strategy `append` in Merger (later on, `combineWithKey` will also be supported).
 
-[Use case full example](./examples/merge-lists-without-schema/README.md).
+[Use case full example](./examples/manifest-lists-without-schema/README.md).
 
 ### 3. Structure long manifests into smaller ones
 
@@ -125,7 +125,7 @@ In some use cases (e.g., [Crossplane Compositions](https://docs.crossplane.io/la
 you could have a long YAML manifest, and it's hard to read through it. You can split that file
 and use the Merger `patch` input method to make it a single manifest again.
 
-[Use case full example](./examples/structure-long-manifests/README.md).
+[Use case full example](./examples/long-omni-manifest/README.md).
 
 
 ## TO-DO
