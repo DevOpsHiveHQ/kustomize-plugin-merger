@@ -1,8 +1,11 @@
 [![CI](https://img.shields.io/github/actions/workflow/status/aabouzaid/kustomize-plugin-merger/.github%2Fworkflows%2Fgo-ci.yml?logo=github&label=CI&color=31c653)](https://github.com/aabouzaid/kustomize-plugin-merger/actions/workflows/go-ci.yml?query=branch%3Amain)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/aabouzaid/kustomize-plugin-merger/.github%2Fworkflows%2Fgo-ci.yml?logo=github&label=CodeQL&color=31c653)](https://github.com/aabouzaid/kustomize-plugin-merger/actions/workflows/sec-codeql.yml?query=branch%3Amain)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/7815/badge)](https://www.bestpractices.dev/projects/7815)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/aabouzaid/kustomize-plugin-merger/badge)](https://securityscorecards.dev/viewer/?uri=github.com/aabouzaid/kustomize-plugin-merger)
 [![Go Report Card](https://goreportcard.com/badge/github.com/aabouzaid/kustomize-plugin-merger)](https://goreportcard.com/report/github.com/aabouzaid/kustomize-plugin-merger)
-[![go.mod](https://img.shields.io/github/go-mod/go-version/aabouzaid/kustomize-plugin-merger?logo=go&logoColor=white)](go.mod)
+[![GitHub Release](https://img.shields.io/github/v/release/aabouzaid/kustomize-plugin-merger?logo=github)](https://github.com/aabouzaid/kustomize-plugin-merger/releases)
+[![Docker](https://img.shields.io/badge/Docker-available-blue?logo=docker&logoColor=white)](https://github.com/aabouzaid/kustomize-plugin-merger/pkgs/container/kustomize-generator-merger)
+[![Go Reference](https://pkg.go.dev/badge/github.com/aabouzaid/kustomize-plugin-merger.svg)](https://pkg.go.dev/github.com/aabouzaid/kustomize-plugin-merger)
 [![Renovatebot](https://img.shields.io/badge/Renovate-enabled-blue?logo=renovatebot)](https://github.com/aabouzaid/kustomize-plugin-merger/issues/7)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/aabouzaid/kustomize-plugin-merger/pulls)
 
