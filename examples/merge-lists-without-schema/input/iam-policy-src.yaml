@@ -1,0 +1,14 @@
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPolicy
+metadata:
+  name: storage-admin-policy
+spec:
+  resourceRef:
+    apiVersion: iam.cnrm.cloud.google.com/v1beta1
+    kind: IAMServiceAccount
+    name: storage-admin
+    namespace: cnrm-system
+  bindings:
+    - role: roles/iam.workloadIdentityUser
+      members:
+        - serviceAccount:mysten-sui.svc.id.goog[monitoring/test-compactor]
