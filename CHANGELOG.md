@@ -1,5 +1,31 @@
 # Changelog
 
+## 1.0.0 (2023-09-12)
+
+
+### Features
+
+* first working version of merger ([6638182](https://github.com/aabouzaid/kustomize-plugin-merger/commit/66381828b698ea07ab1e51354814ec23138b9e52))
+
+
+### Documentation
+
+* update the main readme and use cases ([65ead0e](https://github.com/aabouzaid/kustomize-plugin-merger/commit/65ead0e117b84c90046b4dbd63321df956a5c1e1))
+* use case - append CustomResources lists without schema ([8771624](https://github.com/aabouzaid/kustomize-plugin-merger/commit/8771624273db88c53e85b5391f9529c8066254b4))
+* use case - Generate multiple manifests from a single file ([db3c520](https://github.com/aabouzaid/kustomize-plugin-merger/commit/db3c520f098a67cd347b708f812d435fd16a338b))
+* use case - Organize long manifests into smaller ones ([01687c6](https://github.com/aabouzaid/kustomize-plugin-merger/commit/01687c6963bcb37db42b643ff93396e34221ff24))
+
+
+### Continuous Integration
+
+* add go release workflow ([66bc5a5](https://github.com/aabouzaid/kustomize-plugin-merger/commit/66bc5a5091a9d0a7eb52b243c733cdd82250226c))
+* go linter config and ci workflow ([#1](https://github.com/aabouzaid/kustomize-plugin-merger/issues/1)) ([b822290](https://github.com/aabouzaid/kustomize-plugin-merger/commit/b82229069441234dc150b7798b04d8fa3ec2638a))
+* go releaser ([#2](https://github.com/aabouzaid/kustomize-plugin-merger/issues/2)) ([fbf3086](https://github.com/aabouzaid/kustomize-plugin-merger/commit/fbf30869e25c33a58f3c2a2471c4b43df7b78b72))
+* renovate for dependency update ([#4](https://github.com/aabouzaid/kustomize-plugin-merger/issues/4)) ([cc82dcb](https://github.com/aabouzaid/kustomize-plugin-merger/commit/cc82dcb97aba379c309521103e118c0fe12fb3ae))
+* **security:** apply best practices by step security ([#8](https://github.com/aabouzaid/kustomize-plugin-merger/issues/8)) ([9e78ebf](https://github.com/aabouzaid/kustomize-plugin-merger/commit/9e78ebfa14a5c40624c75b8a2cbc97beda1eb1e8))
+* **security:** codeql analysis workflow ([#3](https://github.com/aabouzaid/kustomize-plugin-merger/issues/3)) ([942f62d](https://github.com/aabouzaid/kustomize-plugin-merger/commit/942f62d7b9b835d5cdefc203e9681604d8b3a509))
+* **security:** Scorecard security workflow ([0b07e13](https://github.com/aabouzaid/kustomize-plugin-merger/commit/0b07e13e19446a1c53a93a67ac49b84f736277eb))
+
 ## 1.0.0 (2023-09-10)
 
 
