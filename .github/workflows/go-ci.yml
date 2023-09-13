@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
     - uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe # v4
       with:
-        go-version: '1.21'
+        go-version-file: go.mod
         cache: false
     - name: Run GolangCI Linter
       uses: golangci/golangci-lint-action@3a919529898de77ec3da873e3063ca4b10e7f5cc # v3
@@ -25,36 +25,16 @@ jobs:
 
   build:
     name: Build Artifacts
+    permissions:
+      contents: read
+      id-token: write
     needs: ["lint"]
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
-    - uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe # v4
-      with:
-        go-version: '1.21'
-        cache: false
-    - name: Setup Golang Caches
-      uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3
-      with:
-        path: |
-          ~/.cache/go-build
-          ~/go/pkg/mod
-        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-        restore-keys: |
-          ${{ runner.os }}-go-
-    - name: Run GoReleaser
-      uses: goreleaser/goreleaser-action@7ec5c2b0c6cdda6e8bbb49444bc797dd33d74dd8 # v5
-      with:
-        distribution: goreleaser
-        version: latest
-        args: release --clean --snapshot
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Cache Artifacts
-      uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3
-      with:
-        path: dist
-        key: dist
+    uses: ./.github/workflows/tpl-packaging.yml
+    secrets: inherit
+    with:
+      goreleaser-args: "release --clean --snapshot"
+      artifacts-cache: true
+      artifacts-cache-key: "dist-${{ github.run_id }}"
 
   upload:
     name: Upload Artifacts - ${{ matrix.os.name }}
@@ -75,15 +55,19 @@ jobs:
       uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3
       with:
         path: dist
-        key: dist
+        key: dist-${{ github.run_id }}
     # The upload-artifact action doesn't support multi upload 🤷‍♂️!
     - name: Upload Artifacts - AMD
       uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3
       with:
         name: merger-${{ matrix.os.id }}-amd
-        path: dist/kustomize-plugin-merger_${{ matrix.os.id }}_amd*/kustomize-plugin-merger*
+        path: |
+          dist/kustomize-plugin-merger_${{ matrix.os.id }}_amd*/kustomize-plugin-merger*
+          dist/*checksums.txt*
     - name: Upload Artifacts - ARM
       uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3
       with:
         name: merger-${{ matrix.os.id }}-arm
-        path: dist/kustomize-plugin-merger_${{ matrix.os.id }}_arm*/kustomize-plugin-merger*
+        path: |
+          dist/kustomize-plugin-merger_${{ matrix.os.id }}_arm*/kustomize-plugin-merger*
+          dist/*checksums.txt*
