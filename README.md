@@ -16,14 +16,14 @@ A Kustomize generator plugin to merge YAML files seamlessly for real-world use c
 
 **Merger** provides schemaless merge with different merge strategies (StrategicMerge).
 
-
 - [Why](#why)
 - [Features](#features)
 - [Options](#options)
 - [Common use cases](#common-use-cases)
   - [1. Generate multiple manifests from a single base](#1-generate-multiple-manifests-from-a-single-base)
-  - [2. Merge lists in manifests without schema or a unique identifier](#2-merge-lists-in-manifests-without-schema-or-a-unique-identifier)
-  - [3. Organize long manifests into smaller ones](#3-organize-long-manifests-into-smaller-ones)
+  - [2. Merge non-manifest files and store them into ConfigMap or Secret](#2-merge-non-manifest-files-and-store-them-into-configmap-or-secret)
+  - [3. Merge lists in manifests without schema or a unique identifier](#3-merge-lists-in-manifests-without-schema-or-a-unique-identifier)
+  - [4. Organize long manifests into smaller ones](#4-organize-long-manifests-into-smaller-ones)
 - [TO-DO](#to-do)
 - [Project status](#project-status)
 - [Contributing](#contributing)
@@ -49,10 +49,10 @@ and for more details on the challenge of providing OpenAPI schema to merge files
 
 - Generate multiple resources/manifests from a single base without copying the resources multiple times.
 - Merge any manifests (even CustomResources) without needing their OpenAPI schema.
+- Merge applications configuration YAML files into a ConfigMap or Secret.
 - Merge manifests with a list of maps without a unique identifier
   (when using `x-kubernetes-patch-merge-key` is not possible).
 - Merge YAML files with different merge strategies (StrategicMerge).
-- Merge applications configuration YAML files into a ConfigMap or Secret (WIP).
 
 
 ## Options
@@ -74,8 +74,8 @@ metadata:
             dst: /mnt
       # Exec KRM functions.
       # config.kubernetes.io/function: |
-      # exec:
-      #   path: kustomize-plugin-merger
+      #   exec:
+      #     path: kustomize-plugin-merger
 spec:
   resources:
   - name: example
@@ -98,7 +98,7 @@ spec:
       # - Combine: Maps from source merged with destination, but the lists will be combined together.
       strategy: combine
     output:
-      # Available options: raw.
+      # Available options: raw,configmap,secret
       format: raw
 ```
 
@@ -112,29 +112,36 @@ This section shows a couple of use cases where Merger can help.
 In this case, you have multiple `CronJobs`, all of which share the same body,
 but each has a different command or other config.
 
-[Use case full example](./examples/multiple-manifests-from-single-file/README.md).
+[Read the full example](./examples/multiple-manifests-from-single-file/README.md).
 
-### 2. Merge lists in manifests without schema or a unique identifier
+### 2. Merge non-manifest files and store them into ConfigMap or Secret
+
+No plans from Kustomize to support non-manifest files merge and storing them into ConfigMap
+or Secret. Using Merger you can merge any YAML files like application configuration.
+
+[Read the full example](./examples/non-manifest-into-configmap-or-secret/README.md).
+
+### 3. Merge lists in manifests without schema or a unique identifier
 
 Currently, in Kustomize, it's not possible to merge resources without a unique identifier, even with Open API schema.
 
 It's possible to do that using the merge strategy `append` in Merger (later on, `combineWithKey` will also be supported).
 
-[Use case full example](./examples/manifest-lists-without-schema/README.md).
+[Read the full example](./examples/manifest-lists-without-schema/README.md).
 
-### 3. Organize long manifests into smaller ones
+### 4. Organize long manifests into smaller ones
 
 In some use cases (e.g., [Crossplane Compositions](https://docs.crossplane.io/latest/concepts/compositions/)),
 you could have a really long YAML manifest, and it's hard to read. You can split that file
 and use the Merger `patch` input method to make it a single manifest again.
 
-[Use case full example](./examples/long-omni-manifest/README.md).
+[Read the full example](./examples/long-omni-manifest/README.md).
 
 
 ## TO-DO
 
-- Support `ConfigMap` or `Secret` as an output.
 - Support `combine` merge strategy with an identifier key (similar to `x-kubernetes-patch-merge-key`).
+- Configure the output indentation.
 - Provide better docs for Merger options.
 
 

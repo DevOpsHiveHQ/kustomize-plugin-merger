@@ -10,7 +10,6 @@ package merger
 import (
 	"dario.cat/mergo"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"sigs.k8s.io/kustomize/kyaml/yaml"
 )
 
 // Merger manifest configuration.
@@ -68,7 +67,6 @@ const (
 type resourceInput struct {
 	Method resourceInputMethod `yaml:"method" json:"method"`
 	Files  resourceInputFiles  `yaml:"files" json:"files"`
-	items  []resourceInputFiles
 }
 
 //
@@ -80,8 +78,8 @@ type resourceInput struct {
 type resourceMergeStrategy string
 
 // Merger resource merge strategy available options.
-// TODO: Support combine lists by named key.
 const (
+	// TODO: Support combine lists by named key.
 	Append  resourceMergeStrategy = "append"
 	Combine resourceMergeStrategy = "combine"
 	Replace resourceMergeStrategy = "replace"
@@ -97,15 +95,17 @@ type resourceMerge struct {
 //
 
 // +enum
-// +kubebuilder:validation:Enum=raw
+// +kubebuilder:validation:Enum=raw;configmap;secret
 type resourceOutputFormat string
 
-// TODO: Support ConfigMap and Secret.
+// Merger resource output available options.
 const (
-	Raw resourceOutputFormat = "raw"
+	Raw       resourceOutputFormat = "raw"
+	ConfigMap resourceOutputFormat = "configmap"
+	Secret    resourceOutputFormat = "secret"
 )
 
 type resourceOutput struct {
-	Format  resourceOutputFormat `yaml:"format" json:"format"`
-	rlItems []*yaml.RNode
+	Format resourceOutputFormat `yaml:"format" json:"format"`
+	items  map[string]string
 }

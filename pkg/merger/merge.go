@@ -3,6 +3,7 @@ package merger
 
 import (
 	"log"
+	"path/filepath"
 	"strings"
 
 	"dario.cat/mergo"
@@ -32,64 +33,82 @@ func (r *mergerResource) setInputFilesRoot() {
 	}
 }
 
-func (r *mergerResource) setInputFilesOverlay() {
-	r.setInputFilesRoot()
-	for _, inputFileSource := range r.Input.Files.Sources {
-		r.Input.items = append(r.Input.items,
-			resourceInputFiles{
-				Sources:     []string{r.Input.Files.Root + inputFileSource},
-				Destination: r.Input.Files.Root + r.Input.Files.Destination,
-			})
+func (r *mergerResource) loadDestinationFile() *koanf.Koanf {
+	k := koanf.New(".")
+	dstFile := r.Input.Files.Root + r.Input.Files.Destination
+	if err := k.Load(koanfFile.Provider(dstFile), koanfYaml.Parser()); err != nil {
+		log.Fatalf("Error loading config: %v", err)
 	}
-}
-
-func (r *mergerResource) setInputFilesPatch() {
-	r.setInputFilesRoot()
-	r.Input.Files.Destination = r.Input.Files.Root + r.Input.Files.Destination
-	for index, inputFileSource := range r.Input.Files.Sources {
-		r.Input.Files.Sources[index] = r.Input.Files.Root + inputFileSource
-	}
-	r.Input.items = append(r.Input.items, r.Input.Files)
-}
-
-// setInputFiles determines the input file sources based on the input method (Overlay or Patch).
-func (r *mergerResource) setInputFiles() error {
-	switch r.Input.Method {
-	case Overlay:
-		r.setInputFilesOverlay()
-	case Patch:
-		r.setInputFilesPatch()
-	}
-	return nil
+	return k
 }
 
 // merge performs the actual merging of configuration files from resourceInputFiles sources.
-func (r *mergerResource) merge(rfs []resourceInputFiles) {
-	for _, rf := range rfs {
-		k := koanf.New(".")
+func (r *mergerResource) merge() {
+	// TODO: Simplify/split the logic in merge method.
+	k := r.loadDestinationFile()
+	fileKey := r.Name
 
-		if err := k.Load(koanfFile.Provider(rf.Destination), koanfYaml.Parser()); err != nil {
+	for _, srcFile := range r.Input.Files.Sources {
+		srcFile = r.Input.Files.Root + srcFile
+
+		if r.Input.Method == Overlay {
+			k = r.loadDestinationFile()
+			fileKey = filepath.Base(srcFile)
+		}
+
+		err := k.Load(koanfFile.Provider(srcFile), koanfYaml.Parser(),
+			koanf.WithMergeFunc(func(src, dst map[string]interface{}) error {
+				if err := mergo.Merge(&dst, src, mergo.WithOverride, r.Merge.config); err != nil {
+					log.Fatalf("Error merging config: %v", err)
+				}
+				return nil
+			}))
+		if err != nil {
 			log.Fatalf("Error loading config: %v", err)
 		}
-
-		for _, srcFile := range rf.Sources {
-			err := k.Load(koanfFile.Provider(srcFile), koanfYaml.Parser(),
-				koanf.WithMergeFunc(func(src, dst map[string]interface{}) error {
-					if err := mergo.Merge(&dst, src, mergo.WithOverride, r.Merge.config); err != nil {
-						log.Fatalf("Error merging config: %v", err)
-					}
-					return nil
-				}))
-			if err != nil {
-				log.Fatalf("Error loading config: %v", err)
-			}
-		}
-
+		//
 		mergedData, err := k.Marshal(koanfYaml.Parser())
 		if err != nil {
 			log.Fatalf("Error marshaling yaml: %v", err)
 		}
-		rNode := yaml.MustParse(string(mergedData))
-		r.Output.rlItems = append(r.Output.rlItems, rNode)
+		r.Output.items[fileKey] = string(mergedData)
 	}
+}
+
+func (r *mergerResource) export() []*yaml.RNode {
+	rlItems := []*yaml.RNode{}
+	switch r.Output.Format {
+	case Raw:
+		for _, value := range r.Output.items {
+			rlItems = append(rlItems, yaml.MustParse(value))
+		}
+
+	case ConfigMap:
+		rNode, _ := yaml.FromMap(map[string]interface{}{
+			"apiVersion": "v1",
+			"kind":       "ConfigMap",
+			"metadata": map[string]string{
+				"name": r.Name,
+			},
+		})
+		if err := rNode.LoadMapIntoConfigMapData(r.Output.items); err != nil {
+			log.Fatalf("Error creating ConfigMap data: %v", err)
+		}
+		rlItems = append(rlItems, rNode)
+
+	case Secret:
+		rNode, _ := yaml.FromMap(map[string]interface{}{
+			"apiVersion": "v1",
+			"kind":       "Secret",
+			"metadata": map[string]string{
+				"name": r.Name,
+			},
+		})
+		if err := rNode.LoadMapIntoSecretData(r.Output.items); err != nil {
+			log.Fatalf("Error creating Secret data: %v", err)
+		}
+		rlItems = append(rlItems, rNode)
+	}
+
+	return rlItems
 }

@@ -5,7 +5,7 @@ CONTROLLER_GEN_VERSION := v0.13.0
 # Schema targets.
 #
 
-.PHONY: schema.install-tools 
+.PHONY: schema.install-tools
 schema.install-tools:
 		mkdir -p $(CONTROLLER_GEN_HOME);\
 		export GOBIN=$(CONTROLLER_GEN_HOME);\

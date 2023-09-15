@@ -82,6 +82,8 @@ spec:
                         format:
                           enum:
                           - raw
+                          - configmap
+                          - secret
                           type: string
                       required:
                       - format

@@ -110,8 +110,8 @@ metadata:
           dst: /mnt
     # Exec KRM functions.
     # config.kubernetes.io/function: |
-    # exec:
-    #   path: kustomize-plugin-merger
+    #   exec:
+    #     path: kustomize-plugin-merger
 spec:
   resources:
   - name: my-eks-composition

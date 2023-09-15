@@ -25,12 +25,12 @@ func (m *Merger) Schema() (*spec.Schema, error) {
 // Default sets default values for Merger resources.
 func (m *Merger) Default() error {
 	for index := range m.Spec.Resources {
-		// Defaults input files.
-		if err := m.Spec.Resources[index].setInputFiles(); err != nil {
-			return err
-		}
+		//
+		m.Spec.Resources[index].setInputFilesRoot()
 		// Defaults merge strategy.
 		m.Spec.Resources[index].setMergeStrategy()
+		// Create empty map for staged data.
+		m.Spec.Resources[index].Output.items = make(map[string]string)
 	}
 	return nil
 }
@@ -43,8 +43,8 @@ func (m *Merger) Validate() error {
 // Filter performs the merging of configuration files for Merger resources.
 func (m *Merger) Filter(rlItems []*yaml.RNode) ([]*yaml.RNode, error) {
 	for _, resource := range m.Spec.Resources {
-		resource.merge(resource.Input.items)
-		rlItems = append(rlItems, resource.Output.rlItems...)
+		resource.merge()
+		rlItems = append(rlItems, resource.export()...)
 	}
 	return rlItems, nil
 }

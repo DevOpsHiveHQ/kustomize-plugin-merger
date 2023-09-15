@@ -8,27 +8,12 @@ functionConfig:
   kind: Merger
   metadata:
     name: merge
-    annotations:
-      # Containerized KRM function.
-      config.kubernetes.io/function: |
-        container:
-          image: ghcr.io/aabouzaid/kustomize-generator-merger
-          mounts:
-          - type: bind
-            src: ./
-            dst: /mnt
-      # Exec KRM functions.
-      # config.kubernetes.io/function: |
-      # exec:
-      #   path: kustomize-plugin-merger
   spec:
     resources:
-    - name: my-envs
+    - name: raw-output-patch
       input:
-        method: overlay
+        method: patch
         files:
-          # The same as in the KRM container above, omit it if Exec KRM is used.
-          root: /mnt
           sources:
           - input/dev.yaml
           - input/stage.yaml
@@ -37,3 +22,39 @@ functionConfig:
         strategy: append
       output:
         format: raw
+    - name: raw-output-overlay
+      input:
+        method: overlay
+        files:
+          sources:
+          - input/dev.yaml
+          - input/stage.yaml
+          destination: input/base.yaml
+      merge:
+        strategy: append
+      output:
+        format: raw
+    - name: configmap-output
+      input:
+        method: overlay
+        files:
+          sources:
+          - input/dev.yaml
+          - input/stage.yaml
+          destination: input/base.yaml
+      merge:
+        strategy: append
+      output:
+        format: configmap
+    - name: secret-output
+      input:
+        method: overlay
+        files:
+          sources:
+          - input/dev.yaml
+          - input/stage.yaml
+          destination: input/base.yaml
+      merge:
+        strategy: append
+      output:
+        format: secret
