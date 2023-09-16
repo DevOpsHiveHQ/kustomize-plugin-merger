@@ -1,0 +1,3 @@
+rule_files:
+  - "first_rules.yml"
+  - "second_rules.yml"
