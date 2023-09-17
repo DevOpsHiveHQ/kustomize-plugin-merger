@@ -22,10 +22,17 @@ on:
         default: dist
         type: string
 
-# The permissions are inherited from the caller workflow.
+permissions:
+  contents: read
+
 jobs:
   run:
     name: Run GoReleaser
+    permissions:
+      id-token: write
+      contents: write
+      packages: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4

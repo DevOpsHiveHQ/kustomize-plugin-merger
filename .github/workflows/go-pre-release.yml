@@ -13,8 +13,9 @@ jobs:
     name: Pre Release
     runs-on: ubuntu-latest
     permissions:
-      actions: write
+      id-token: write
       contents: write
+      packages: write
       pull-requests: write
     steps:
     - name: Run Release Please

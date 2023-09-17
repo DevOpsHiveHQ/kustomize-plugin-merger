@@ -26,8 +26,10 @@ jobs:
   build:
     name: Build Artifacts
     permissions:
-      contents: read
       id-token: write
+      contents: write
+      packages: write
+      pull-requests: write
     needs: ["lint"]
     uses: ./.github/workflows/tpl-packaging.yml
     secrets: inherit
