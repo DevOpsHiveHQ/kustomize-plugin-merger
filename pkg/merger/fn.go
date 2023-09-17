@@ -28,7 +28,7 @@ func (m *Merger) Default() error {
 		//
 		m.Spec.Resources[index].setInputFilesRoot()
 		// Defaults merge strategy.
-		m.Spec.Resources[index].setMergeStrategy()
+		m.Spec.Resources[index].Merge.setStrategy()
 		// Create empty map for staged data.
 		m.Spec.Resources[index].Output.items = make(map[string]string)
 	}

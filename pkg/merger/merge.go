@@ -13,17 +13,17 @@ import (
 	"sigs.k8s.io/kustomize/kyaml/yaml"
 )
 
-// setMergeStrategy sets "mergo" merging strategy, mainly for merging arrays.
-func (r *mergerResource) setMergeStrategy() {
-	switch r.Merge.Strategy {
+// setStrategy sets "mergo" merging strategy, mainly for merging arrays.
+func (rm *resourceMerge) setStrategy() {
+	switch rm.Strategy {
 	case Replace:
-		r.Merge.config = mergo.WithOverride
+		rm.config = mergo.WithOverride
 	case Append:
-		r.Merge.config = mergo.WithAppendSlice
+		rm.config = mergo.WithAppendSlice
 	case Combine:
-		r.Merge.config = mergo.WithSliceDeepCopy
+		rm.config = mergo.WithSliceDeepCopy
 	default:
-		r.Merge.config = func(*mergo.Config) {}
+		rm.config = func(*mergo.Config) {}
 	}
 }
 
