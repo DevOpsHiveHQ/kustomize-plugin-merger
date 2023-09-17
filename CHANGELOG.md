@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.1.0](https://github.com/aabouzaid/kustomize-plugin-merger/compare/v1.0.0...v1.1.0) (2023-09-17)
+
+
+### Features
+
+* support ConfigMap and Secret as an output ([#34](https://github.com/aabouzaid/kustomize-plugin-merger/issues/34)) ([62e552e](https://github.com/aabouzaid/kustomize-plugin-merger/commit/62e552e49738bedf7dcaf32d49e3ea6ef70caf5b))
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([3f5c70c](https://github.com/aabouzaid/kustomize-plugin-merger/commit/3f5c70c33f2a89927f52292000cb18e3f280d790))
+
+
+### Continuous Integration
+
+* unify build and release packages ([#26](https://github.com/aabouzaid/kustomize-plugin-merger/issues/26)) ([8381945](https://github.com/aabouzaid/kustomize-plugin-merger/commit/8381945bd297b80431288d83a24ad3398404b6be))
+
 ## 1.0.0 (2023-09-10)
 
 
