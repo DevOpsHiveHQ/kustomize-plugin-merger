@@ -21,3 +21,4 @@ jobs:
     secrets: inherit
     with:
       goreleaser-args: "release --clean"
+      registry-login: true
