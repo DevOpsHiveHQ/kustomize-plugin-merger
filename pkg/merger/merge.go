@@ -82,26 +82,32 @@ func (r *mergerResource) export() []*yaml.RNode {
 		}
 
 	case ConfigMap:
-		rNode, _ := yaml.FromMap(map[string]interface{}{
+		rNode, err := yaml.FromMap(map[string]interface{}{
 			"apiVersion": "v1",
 			"kind":       "ConfigMap",
 			"metadata": map[string]string{
 				"name": r.Name,
 			},
 		})
+		if err != nil {
+			log.Fatalf("Error creating ConfigMap: %v", err)
+		}
 		if err := rNode.LoadMapIntoConfigMapData(r.Output.items); err != nil {
 			log.Fatalf("Error creating ConfigMap data: %v", err)
 		}
 		rlItems = append(rlItems, rNode)
 
 	case Secret:
-		rNode, _ := yaml.FromMap(map[string]interface{}{
+		rNode, err := yaml.FromMap(map[string]interface{}{
 			"apiVersion": "v1",
 			"kind":       "Secret",
 			"metadata": map[string]string{
 				"name": r.Name,
 			},
 		})
+		if err != nil {
+			log.Fatalf("Error creating Secret: %v", err)
+		}
 		if err := rNode.LoadMapIntoSecretData(r.Output.items); err != nil {
 			log.Fatalf("Error creating Secret data: %v", err)
 		}
