@@ -8,7 +8,7 @@ require (
 	github.com/knadh/koanf/providers/file v0.1.0
 	github.com/knadh/koanf/v2 v2.0.1
 	k8s.io/apimachinery v0.28.2
-	k8s.io/kube-openapi v0.0.0-20230905202853-d090da108d2f
+	k8s.io/kube-openapi v0.0.0-20230918164632-68afd615200d
 	sigs.k8s.io/kustomize/kyaml v0.14.3
 )
 
