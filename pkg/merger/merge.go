@@ -22,8 +22,6 @@ func (rm *resourceMerge) setStrategy() {
 		rm.config = mergo.WithAppendSlice
 	case Combine:
 		rm.config = mergo.WithSliceDeepCopy
-	default:
-		rm.config = func(*mergo.Config) {}
 	}
 }
 
