@@ -13,29 +13,27 @@ import (
 	"sigs.k8s.io/kustomize/kyaml/yaml"
 )
 
-// setMergeStrategy sets "mergo" merging strategy, mainly for merging arrays.
-func (r *mergerResource) setMergeStrategy() {
-	switch r.Merge.Strategy {
+// setStrategy sets "mergo" merging strategy, mainly for merging arrays.
+func (rm *resourceMerge) setStrategy() {
+	switch rm.Strategy {
 	case Replace:
-		r.Merge.config = mergo.WithOverride
+		rm.config = mergo.WithOverride
 	case Append:
-		r.Merge.config = mergo.WithAppendSlice
+		rm.config = mergo.WithAppendSlice
 	case Combine:
-		r.Merge.config = mergo.WithSliceDeepCopy
-	default:
-		r.Merge.config = func(*mergo.Config) {}
+		rm.config = mergo.WithSliceDeepCopy
 	}
 }
 
-func (r *mergerResource) setInputFilesRoot() {
-	if r.Input.Files.Root != "" {
-		r.Input.Files.Root = strings.TrimSuffix(r.Input.Files.Root, "/") + "/"
+func (rif *resourceInputFiles) setRoot() {
+	if rif.Root != "" {
+		rif.Root = strings.TrimSuffix(rif.Root, "/") + "/"
 	}
 }
 
-func (r *mergerResource) loadDestinationFile() *koanf.Koanf {
+func (rif *resourceInputFiles) loadDestinationFile() *koanf.Koanf {
 	k := koanf.New(".")
-	dstFile := r.Input.Files.Root + r.Input.Files.Destination
+	dstFile := rif.Root + rif.Destination
 	if err := k.Load(koanfFile.Provider(dstFile), koanfYaml.Parser()); err != nil {
 		log.Fatalf("Error loading config: %v", err)
 	}
@@ -45,14 +43,14 @@ func (r *mergerResource) loadDestinationFile() *koanf.Koanf {
 // merge performs the actual merging of configuration files from resourceInputFiles sources.
 func (r *mergerResource) merge() {
 	// TODO: Simplify/split the logic in merge method.
-	k := r.loadDestinationFile()
+	k := r.Input.Files.loadDestinationFile()
 	fileKey := r.Name
 
 	for _, srcFile := range r.Input.Files.Sources {
 		srcFile = r.Input.Files.Root + srcFile
 
 		if r.Input.Method == Overlay {
-			k = r.loadDestinationFile()
+			k = r.Input.Files.loadDestinationFile()
 			fileKey = filepath.Base(srcFile)
 		}
 
@@ -84,26 +82,32 @@ func (r *mergerResource) export() []*yaml.RNode {
 		}
 
 	case ConfigMap:
-		rNode, _ := yaml.FromMap(map[string]interface{}{
+		rNode, err := yaml.FromMap(map[string]interface{}{
 			"apiVersion": "v1",
 			"kind":       "ConfigMap",
 			"metadata": map[string]string{
 				"name": r.Name,
 			},
 		})
+		if err != nil {
+			log.Fatalf("Error creating ConfigMap: %v", err)
+		}
 		if err := rNode.LoadMapIntoConfigMapData(r.Output.items); err != nil {
 			log.Fatalf("Error creating ConfigMap data: %v", err)
 		}
 		rlItems = append(rlItems, rNode)
 
 	case Secret:
-		rNode, _ := yaml.FromMap(map[string]interface{}{
+		rNode, err := yaml.FromMap(map[string]interface{}{
 			"apiVersion": "v1",
 			"kind":       "Secret",
 			"metadata": map[string]string{
 				"name": r.Name,
 			},
 		})
+		if err != nil {
+			log.Fatalf("Error creating Secret: %v", err)
+		}
 		if err := rNode.LoadMapIntoSecretData(r.Output.items); err != nil {
 			log.Fatalf("Error creating Secret data: %v", err)
 		}

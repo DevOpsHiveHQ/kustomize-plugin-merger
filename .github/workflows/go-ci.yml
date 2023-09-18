@@ -9,8 +9,8 @@ permissions:
   contents: read
 
 jobs:
-  lint:
-    name: Lint Code
+  lint-and-test:
+    name: Lint And Test Code
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
@@ -18,19 +18,26 @@ jobs:
       with:
         go-version-file: go.mod
         cache: false
-    - name: Run GolangCI Linter
+    - name: Run GolangCI linter
       uses: golangci/golangci-lint-action@3a919529898de77ec3da873e3063ca4b10e7f5cc # v3
       with:
         version: v1.54
+        args: '--timeout=5m'
+    - name: Run Go test coverage
+      run: go test -race -coverprofile=coverage.out -covermode=atomic ./...
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   build:
     name: Build Artifacts
+    needs: ["lint-and-test"]
     permissions:
       id-token: write
       contents: write
       packages: write
       pull-requests: write
-    needs: ["lint"]
     uses: ./.github/workflows/tpl-packaging.yml
     secrets: inherit
     with:

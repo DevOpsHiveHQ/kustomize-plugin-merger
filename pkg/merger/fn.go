@@ -26,9 +26,9 @@ func (m *Merger) Schema() (*spec.Schema, error) {
 func (m *Merger) Default() error {
 	for index := range m.Spec.Resources {
 		//
-		m.Spec.Resources[index].setInputFilesRoot()
+		m.Spec.Resources[index].Input.Files.setRoot()
 		// Defaults merge strategy.
-		m.Spec.Resources[index].setMergeStrategy()
+		m.Spec.Resources[index].Merge.setStrategy()
 		// Create empty map for staged data.
 		m.Spec.Resources[index].Output.items = make(map[string]string)
 	}
