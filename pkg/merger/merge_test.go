@@ -43,3 +43,35 @@ func TestSetMergeStrategy(t *testing.T) {
 			"Expected config to be %v, but got %v", tt.expected, tt.actual.config)
 	}
 }
+
+func TestSetRoot(t *testing.T) {
+	tests := []struct {
+		actual   resourceInputFiles
+		expected string
+	}{
+		{
+			actual: resourceInputFiles{
+				Root: "/mnt",
+			},
+			expected: "/mnt/",
+		},
+		{
+			actual: resourceInputFiles{
+				Root: "/mnt/",
+			},
+			expected: "/mnt/",
+		},
+		{
+			actual: resourceInputFiles{
+				Root: "my-dir",
+			},
+			expected: "my-dir/",
+		},
+	}
+
+	for _, tt := range tests {
+		tt.actual.setRoot()
+		assert.Equal(t, tt.expected, tt.actual.Root,
+			"Expected root to be %v, but got %v", tt.expected, tt.actual)
+	}
+}

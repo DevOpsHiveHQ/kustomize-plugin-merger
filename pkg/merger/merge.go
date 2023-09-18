@@ -27,9 +27,9 @@ func (rm *resourceMerge) setStrategy() {
 	}
 }
 
-func (r *mergerResource) setInputFilesRoot() {
-	if r.Input.Files.Root != "" {
-		r.Input.Files.Root = strings.TrimSuffix(r.Input.Files.Root, "/") + "/"
+func (rif *resourceInputFiles) setRoot() {
+	if rif.Root != "" {
+		rif.Root = strings.TrimSuffix(rif.Root, "/") + "/"
 	}
 }
 
