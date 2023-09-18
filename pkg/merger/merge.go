@@ -33,9 +33,9 @@ func (rif *resourceInputFiles) setRoot() {
 	}
 }
 
-func (r *mergerResource) loadDestinationFile() *koanf.Koanf {
+func (rif *resourceInputFiles) loadDestinationFile() *koanf.Koanf {
 	k := koanf.New(".")
-	dstFile := r.Input.Files.Root + r.Input.Files.Destination
+	dstFile := rif.Root + rif.Destination
 	if err := k.Load(koanfFile.Provider(dstFile), koanfYaml.Parser()); err != nil {
 		log.Fatalf("Error loading config: %v", err)
 	}
@@ -45,14 +45,14 @@ func (r *mergerResource) loadDestinationFile() *koanf.Koanf {
 // merge performs the actual merging of configuration files from resourceInputFiles sources.
 func (r *mergerResource) merge() {
 	// TODO: Simplify/split the logic in merge method.
-	k := r.loadDestinationFile()
+	k := r.Input.Files.loadDestinationFile()
 	fileKey := r.Name
 
 	for _, srcFile := range r.Input.Files.Sources {
 		srcFile = r.Input.Files.Root + srcFile
 
 		if r.Input.Method == Overlay {
-			k = r.loadDestinationFile()
+			k = r.Input.Files.loadDestinationFile()
 			fileKey = filepath.Base(srcFile)
 		}
 

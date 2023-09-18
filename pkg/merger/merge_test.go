@@ -40,7 +40,7 @@ func TestSetMergeStrategy(t *testing.T) {
 		expected := runtime.FuncForPC(reflect.ValueOf(tt.expected).Pointer()).Name()
 
 		assert.Equal(t, expected, actual,
-			"Expected config to be %v, but got %v", tt.expected, tt.actual.config)
+			"Expected to be %v, but got %v", tt.expected, tt.actual.config)
 	}
 }
 
@@ -72,6 +72,27 @@ func TestSetRoot(t *testing.T) {
 	for _, tt := range tests {
 		tt.actual.setRoot()
 		assert.Equal(t, tt.expected, tt.actual.Root,
-			"Expected root to be %v, but got %v", tt.expected, tt.actual)
+			"Expected to be %v, but got %v", tt.expected, tt.actual)
+	}
+}
+
+func TestLoadDestinationFile(t *testing.T) {
+	tests := []struct {
+		actual   resourceInputFiles
+		expected string
+	}{
+		{
+			actual: resourceInputFiles{
+				Root:        "./",
+				Destination: "testdata/test_load_destination_file.yaml",
+			},
+			expected: "foo",
+		},
+	}
+
+	for _, tt := range tests {
+		k := tt.actual.loadDestinationFile()
+		assert.Contains(t, k.Keys(), tt.expected,
+			"Expected to be %v, but got %v", tt.expected, tt.actual)
 	}
 }

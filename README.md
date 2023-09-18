@@ -3,10 +3,11 @@
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/7815/badge)](https://www.bestpractices.dev/projects/7815)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/aabouzaid/kustomize-plugin-merger/badge)](https://securityscorecards.dev/viewer/?uri=github.com/aabouzaid/kustomize-plugin-merger)
 [![Go Report Card](https://goreportcard.com/badge/github.com/aabouzaid/kustomize-plugin-merger)](https://goreportcard.com/report/github.com/aabouzaid/kustomize-plugin-merger)
+[![codecov](https://codecov.io/github/aabouzaid/kustomize-plugin-merger/graph/badge.svg?token=BUFRT7BO2I)](https://codecov.io/github/aabouzaid/kustomize-plugin-merger)
 [![GitHub Release](https://img.shields.io/github/v/release/aabouzaid/kustomize-plugin-merger?logo=github)](https://github.com/aabouzaid/kustomize-plugin-merger/releases)
 [![Docker](https://img.shields.io/badge/Docker-available-blue?logo=docker&logoColor=white)](https://github.com/aabouzaid/kustomize-plugin-merger/pkgs/container/kustomize-generator-merger)
 [![Go Reference](https://pkg.go.dev/badge/github.com/aabouzaid/kustomize-plugin-merger.svg)](https://pkg.go.dev/github.com/aabouzaid/kustomize-plugin-merger)
-[![Renovatebot](https://img.shields.io/badge/Renovate-enabled-blue?logo=renovatebot)](https://github.com/aabouzaid/kustomize-plugin-merger/issues/7)
+[![Renovate](https://img.shields.io/badge/Renovate-enabled-blue?logo=renovatebot)](https://github.com/aabouzaid/kustomize-plugin-merger/issues/7)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/aabouzaid/kustomize-plugin-merger/pulls)
 
 <!-- omit in toc -->
