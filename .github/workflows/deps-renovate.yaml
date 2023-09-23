@@ -16,6 +16,6 @@ jobs:
     steps:
     - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
     - name: Validate renovate config
-      uses: docker://renovate/renovate:slim@sha256:c1d292a1b132df00a38a7fecee4cf11baa7c0cd699732696c479a2b623a2b792
+      uses: docker://renovate/renovate:slim@sha256:0e03cc220c3f06a05145dc6fcee065c5e2ad22bcfabcfcc42b873933d867be41
       with:
         args: renovate-config-validator
