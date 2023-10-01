@@ -4,6 +4,7 @@
     "docker:pinDigests",
     "helpers:pinGitHubActionDigests"
   ],
+  "schedule": ["* 4 1,16 * *"],
   "dependencyDashboard": true,
   "labels": [
     "dependencies"
