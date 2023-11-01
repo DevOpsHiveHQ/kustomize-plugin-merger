@@ -14,8 +14,8 @@ jobs:
     name: Check renovate config 
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
+    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
     - name: Validate renovate config
-      uses: docker://renovate/renovate:slim@sha256:28c95b82d06785c86685b0f66107350bca76b7df4f179562bf75f0256f0252ea
+      uses: docker://renovate/renovate:slim@sha256:7a93004158a5e30f4eaee974d6acda5005f2a03d6e36a4157cc6b566cf792739
       with:
         args: renovate-config-validator
