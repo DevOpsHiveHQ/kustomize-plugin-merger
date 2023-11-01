@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/aabouzaid/kustomize-plugin-merger/compare/v1.1.0...v1.1.1) (2023-10-01)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([c040f6d](https://github.com/aabouzaid/kustomize-plugin-merger/commit/c040f6d0d68b188006d14ea0b742868fdea6b815))
+* **deps:** update k8s.io/kube-openapi digest to a781456 ([c7a678c](https://github.com/aabouzaid/kustomize-plugin-merger/commit/c7a678c88af453270d0dfd063610294b4a8b0402))
+
 ## [1.1.0](https://github.com/aabouzaid/kustomize-plugin-merger/compare/v1.0.0...v1.1.0) (2023-09-17)
 
 
