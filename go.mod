@@ -8,9 +8,9 @@ require (
 	github.com/knadh/koanf/providers/file v0.1.0
 	github.com/knadh/koanf/v2 v2.0.1
 	github.com/stretchr/testify v1.8.4
-	k8s.io/apimachinery v0.28.2
-	k8s.io/kube-openapi v0.0.0-20230928205116-a78145627833
-	sigs.k8s.io/kustomize/kyaml v0.14.3
+	k8s.io/apimachinery v0.28.3
+	k8s.io/kube-openapi v0.0.0-20231010175941-2dd684a91f00
+	sigs.k8s.io/kustomize/kyaml v0.15.0
 )
 
 require (
@@ -38,9 +38,9 @@ require (
 	github.com/monochromegane/go-gitignore v0.0.0-20200626010858-205db1a8cc00 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/xlab/treeprint v1.2.0 // indirect
-	golang.org/x/net v0.13.0 // indirect
-	golang.org/x/sys v0.10.0 // indirect
-	golang.org/x/text v0.11.0 // indirect
+	golang.org/x/net v0.17.0 // indirect
+	golang.org/x/sys v0.13.0 // indirect
+	golang.org/x/text v0.13.0 // indirect
 	google.golang.org/protobuf v1.30.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
