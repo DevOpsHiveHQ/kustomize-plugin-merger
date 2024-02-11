@@ -11,7 +11,7 @@ import (
 	"sigs.k8s.io/kustomize/kyaml/yaml"
 )
 
-//go:embed "schema/generators.kustomize.aabouzaid.com_mergers.yaml"
+//go:embed "schema/generators.kustomize.devopshive.net_mergers.yaml"
 var mergerSchemaDefinition string
 
 // Schema returns the OpenAPI schema definition for Merger.

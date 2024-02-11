@@ -20,10 +20,10 @@ archives:
         format: zip
 dockers:
   - image_templates:
-    - "ghcr.io/aabouzaid/kustomize-generator-merger:latest"
-    - "ghcr.io/aabouzaid/kustomize-generator-merger:{{ .Major }}"
-    - "ghcr.io/aabouzaid/kustomize-generator-merger:{{ .Major }}.{{ .Minor }}"
-    - "ghcr.io/aabouzaid/kustomize-generator-merger:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
+    - "ghcr.io/devopshivehq/kustomize-generator-merger:latest"
+    - "ghcr.io/devopshivehq/kustomize-generator-merger:{{ .Major }}"
+    - "ghcr.io/devopshivehq/kustomize-generator-merger:{{ .Major }}.{{ .Minor }}"
+    - "ghcr.io/devopshivehq/kustomize-generator-merger:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
     build_flag_templates:
     - "--pull"
     # OCI annotations: https://github.com/opencontainers/image-spec/blob/main/annotations.md

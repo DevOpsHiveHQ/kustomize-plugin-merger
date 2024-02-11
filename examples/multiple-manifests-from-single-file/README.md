@@ -111,7 +111,7 @@ generators:
 
 ```yaml
 # merger.yaml
-apiVersion: generators.kustomize.aabouzaid.com/v1alpha1
+apiVersion: generators.kustomize.devopshive.net/v1alpha1
 kind: Merger
 metadata:
   name: merge
@@ -119,7 +119,7 @@ metadata:
     # Containerized KRM function.
     config.kubernetes.io/function: |
       container:
-        image: ghcr.io/aabouzaid/kustomize-generator-merger
+        image: ghcr.io/devopshivehq/kustomize-generator-merger
         mounts:
         - type: bind
           src: ./

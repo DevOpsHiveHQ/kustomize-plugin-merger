@@ -4,7 +4,7 @@ kind: ResourceList
 metadata:
   name: krm-function-input
 functionConfig:
-  apiVersion: generators.kustomize.aabouzaid.com/v1alpha1
+  apiVersion: generators.kustomize.devopshive.net/v1alpha1
   kind: Merger
   metadata:
     name: merge
