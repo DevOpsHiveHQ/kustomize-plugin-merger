@@ -7,9 +7,9 @@ kind: KRMFunctionDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.13.0
-  name: mergers.generators.kustomize.aabouzaid.com
+  name: mergers.generators.kustomize.devopshive.net
 spec:
-  group: generators.kustomize.aabouzaid.com
+  group: generators.kustomize.devopshive.net
   names:
     kind: Merger
     listKind: MergerList

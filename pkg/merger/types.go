@@ -1,7 +1,7 @@
 // The types of the merger package.
 // KubeBuilder markers are used to auto-generate OpenAPI schema for the plugin.
 //
-// +groupName=generators.kustomize.aabouzaid.com
+// +groupName=generators.kustomize.devopshive.net
 // +versionName=v1alpha1
 // +kubebuilder:validation:Required
 
@@ -14,7 +14,7 @@ import (
 
 // Merger manifest configuration.
 const (
-	ResourceGroup   string = "generators.kustomize.aabouzaid.com"
+	ResourceGroup   string = "generators.kustomize.devopshive.net"
 	ResourceVersion string = "v1alpha1"
 	ResourceKind    string = "Merger"
 )
