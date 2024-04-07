@@ -31,3 +31,7 @@ go.build:
 .PHONY: go.format
 go.format:
 	gofumpt -l -w .
+
+.PHONY: docker.build
+docker.build:
+	docker buildx build --platform linux/arm/v7,linux/arm64/v8,linux/amd64 -t ghcr.io/devopshivehq/kustomize-generator-merger:latest --push
