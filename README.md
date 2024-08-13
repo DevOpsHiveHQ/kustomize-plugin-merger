@@ -1,3 +1,18 @@
+<div align="center">
+
+<p align="center">
+  <a href="https://github.com/DevOpsHiveHQ/kustomize-plugin-merger" style="display: block; padding: 1em 0;">
+    <img width="128px" alt="Kustomize Merger Logo" border="0" src="img/kustomize-merger-logo.svg"/>
+  </a>
+</p>
+
+<h1>Kustomize Merger</h1>
+<p><b>
+
+A Kustomize generator plugin to merge YAML files seamlessly for real-world use cases. Merger provides schemaless merge with different merge strategies (StrategicMerge).
+
+</b></p>
+
 [![CI](https://img.shields.io/github/actions/workflow/status/aabouzaid/kustomize-plugin-merger/.github%2Fworkflows%2Fgo-ci.yml?logo=github&label=CI&color=31c653)](https://github.com/aabouzaid/kustomize-plugin-merger/actions/workflows/go-ci.yml?query=branch%3Amain)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/aabouzaid/kustomize-plugin-merger/.github%2Fworkflows%2Fgo-ci.yml?logo=github&label=CodeQL&color=31c653)](https://github.com/aabouzaid/kustomize-plugin-merger/actions/workflows/sec-codeql.yml?query=branch%3Amain)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/7815/badge)](https://www.bestpractices.dev/projects/7815)
@@ -10,12 +25,7 @@
 [![Renovate](https://img.shields.io/badge/Renovate-enabled-blue?logo=renovatebot)](https://github.com/aabouzaid/kustomize-plugin-merger/issues/7)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/aabouzaid/kustomize-plugin-merger/pulls)
 
-<!-- omit in toc -->
-# 🔀 Merger 🔀
-
-A Kustomize generator plugin to merge YAML files seamlessly for real-world use cases.
-
-**Merger** provides schemaless merge with different merge strategies (StrategicMerge).
+</div>
 
 - [Why](#why)
 - [Features](#features)

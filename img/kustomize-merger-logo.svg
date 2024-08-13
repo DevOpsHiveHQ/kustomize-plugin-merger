@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="128mm"
+   height="128mm"
+   viewBox="0 0 128 128"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="kustomize-merger.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.12315096"
+     inkscape:cx="-771.41096"
+     inkscape:cy="1729.5846"
+     inkscape:window-width="1920"
+     inkscape:window-height="1053"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g2160"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:snap-global="false">
+    <sodipodi:guide
+       position="-199.80558,-297.39253"
+       orientation="0,-1"
+       id="guide914" />
+    <sodipodi:guide
+       position="-259.9621,-671.22233"
+       orientation="0,-1"
+       id="guide916" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-74.333893,-13.489253)">
+    <g
+       id="g2160"
+       transform="matrix(1.6,0,0,1.6,-44.600336,-8.0935518)">
+      <rect
+         style="fill:#1b68c6;fill-opacity:1;stroke-width:0.223632;-inkscape-stroke:none;stop-color:#000000"
+         id="rect846"
+         width="80"
+         height="80"
+         x="74.333893"
+         y="13.489253" />
+      <g
+         id="g1798"
+         transform="matrix(2.386981,0,0,2.386981,-181.05771,-83.09574)">
+        <g
+           id="g2144"
+           transform="translate(0.20707231,0.71529385)">
+          <rect
+             style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+             id="rect1574"
+             width="20.054829"
+             height="20.988806"
+             x="111.51286"
+             y="44.014866" />
+          <rect
+             style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+             id="rect1700"
+             width="20.054829"
+             height="20.988806"
+             x="115.52043"
+             y="48.007366" />
+        </g>
+      </g>
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.27598;stop-color:#000000"
+         id="rect1879"
+         width="750"
+         height="393.75"
+         x="-520.31018"
+         y="199.33788"
+         inkscape:export-filename="/home/ahmed/git/aabouzaid/homepage/content/projects/02-kustomize-merger/featured.png"
+         inkscape:export-xdpi="101.76"
+         inkscape:export-ydpi="101.76" />
+      <g
+         id="g912"
+         transform="matrix(2.65625,0,0,2.65625,-1188.6107,-450.74891)">
+        <rect
+           style="fill:#1b68c6;fill-opacity:1;stroke-width:0.223632;-inkscape-stroke:none;stop-color:#000000"
+           id="rect846-3"
+           width="80"
+           height="80"
+           x="352.77194"
+           y="278.8562" />
+        <g
+           id="g1798-6"
+           transform="matrix(2.386981,0,0,2.386981,97.380346,182.2712)">
+          <g
+             id="g2144-7"
+             transform="translate(0.20707231,0.71529385)">
+            <rect
+               style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+               id="rect1574-5"
+               width="20.054829"
+               height="20.988806"
+               x="111.51286"
+               y="44.014866" />
+            <rect
+               style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+               id="rect1700-3"
+               width="20.054829"
+               height="20.988806"
+               x="115.52043"
+               y="48.007366" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
