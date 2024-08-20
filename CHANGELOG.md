@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/compare/v2.0.0...v2.1.0) (2024-08-20)
+
+
+### Features
+
+* support docker image arm64 arch ([#79](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues/79)) ([f23287d](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/f23287d9614e273fd006a8af89e9e8ea268dd56e))
+
 ## [2.0.0](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/compare/v1.1.0...v2.0.0) (2024-02-11)
 
 
