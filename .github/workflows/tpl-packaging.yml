@@ -9,10 +9,13 @@ on:
       goreleaser-args:
         required: true
         type: string
-      registry-login:
+      artifacts-cache:
         default: false
         type: boolean
-      artifacts-cache:
+      artifacts-identifier:
+        default: latest
+        type: string
+      artifacts-publish-ci:
         default: false
         type: boolean
       artifacts-cache-key:
@@ -52,7 +55,6 @@ jobs:
     - name: Setup Cosign
       uses: sigstore/cosign-installer@main
     - name: Login to GitHub Container Registry
-      if: ${{ inputs.registry-login }}
       uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3
       with:
         registry: ghcr.io
@@ -67,6 +69,24 @@ jobs:
         args: "${{ inputs.goreleaser-args }}"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Cleanup CI Docker Image
+      if: ${{ inputs.artifacts-publish-ci }}
+      uses: actions/delete-package-versions@e5bc658cc4c965c472efe991f8beea3981499c55 # v5.0.0
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        package-name: kustomize-generator-merger-ci
+        package-type: container
+        min-versions-to-keep: 10
+    - name: Publish CI Docker Image
+      if: ${{ inputs.artifacts-publish-ci }}
+      run: |
+        for xarch in amd64 arm64; do
+          docker_image_src="ghcr.io/devopshivehq/kustomize-generator-merger:latest-${xarch}"
+          docker_image_dst="ghcr.io/devopshivehq/kustomize-generator-merger-ci:${{ inputs.artifacts-identifier }}-${xarch}"
+          echo "Tag and push image: ${docker_image_dst}"
+          docker tag ${docker_image_src} ${docker_image_dst}
+          docker push ${docker_image_dst}
+        done
     - name: Cache Artifacts
       uses: actions/cache@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3
       if: ${{ inputs.artifacts-cache }}
