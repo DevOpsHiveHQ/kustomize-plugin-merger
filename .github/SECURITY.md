@@ -11,4 +11,4 @@ The Merger plugin is tested with the following Kustomize versions (but should wo
 
 ## Reporting a Vulnerability
 
-If a vulnerability is found, please report it via [GitHub issues](https://github.com/aabouzaid/kustomize-plugin-merger/issues).
+If a vulnerability is found, please report it via [GitHub issues](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues).

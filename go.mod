@@ -1,4 +1,4 @@
-module github.com/aabouzaid/kustomize-plugin-merger
+module github.com/DevOpsHiveHQ/kustomize-plugin-merger
 
 go 1.22.0
 

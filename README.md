@@ -13,17 +13,17 @@ A Kustomize generator plugin to merge YAML files seamlessly for real-world use c
 
 </b></p>
 
-[![CI](https://img.shields.io/github/actions/workflow/status/aabouzaid/kustomize-plugin-merger/.github%2Fworkflows%2Fgo-ci.yml?logo=github&label=CI&color=31c653)](https://github.com/aabouzaid/kustomize-plugin-merger/actions/workflows/go-ci.yml?query=branch%3Amain)
-[![CodeQL](https://img.shields.io/github/actions/workflow/status/aabouzaid/kustomize-plugin-merger/.github%2Fworkflows%2Fgo-ci.yml?logo=github&label=CodeQL&color=31c653)](https://github.com/aabouzaid/kustomize-plugin-merger/actions/workflows/sec-codeql.yml?query=branch%3Amain)
+[![CI](https://img.shields.io/github/actions/workflow/status/aabouzaid/kustomize-plugin-merger/.github%2Fworkflows%2Fgo-ci.yml?logo=github&label=CI&color=31c653)](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/actions/workflows/go-ci.yml?query=branch%3Amain)
+[![CodeQL](https://img.shields.io/github/actions/workflow/status/aabouzaid/kustomize-plugin-merger/.github%2Fworkflows%2Fgo-ci.yml?logo=github&label=CodeQL&color=31c653)](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/actions/workflows/sec-codeql.yml?query=branch%3Amain)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/7815/badge)](https://www.bestpractices.dev/projects/7815)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/aabouzaid/kustomize-plugin-merger/badge)](https://securityscorecards.dev/viewer/?uri=github.com/aabouzaid/kustomize-plugin-merger)
-[![Go Report Card](https://goreportcard.com/badge/github.com/aabouzaid/kustomize-plugin-merger)](https://goreportcard.com/report/github.com/aabouzaid/kustomize-plugin-merger)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/DevOpsHiveHQ/kustomize-plugin-merger/badge)](https://securityscorecards.dev/viewer/?uri=github.com/DevOpsHiveHQ/kustomize-plugin-merger)
+[![Go Report Card](https://goreportcard.com/badge/github.com/DevOpsHiveHQ/kustomize-plugin-merger)](https://goreportcard.com/report/github.com/DevOpsHiveHQ/kustomize-plugin-merger)
 [![codecov](https://codecov.io/github/aabouzaid/kustomize-plugin-merger/graph/badge.svg?token=BUFRT7BO2I)](https://codecov.io/github/aabouzaid/kustomize-plugin-merger)
-[![GitHub Release](https://img.shields.io/github/v/release/aabouzaid/kustomize-plugin-merger?logo=github)](https://github.com/aabouzaid/kustomize-plugin-merger/releases)
-[![Docker](https://img.shields.io/badge/Docker-available-blue?logo=docker&logoColor=white)](https://github.com/aabouzaid/kustomize-plugin-merger/pkgs/container/kustomize-generator-merger)
-[![Go Reference](https://pkg.go.dev/badge/github.com/aabouzaid/kustomize-plugin-merger.svg)](https://pkg.go.dev/github.com/aabouzaid/kustomize-plugin-merger)
-[![Renovate](https://img.shields.io/badge/Renovate-enabled-blue?logo=renovatebot)](https://github.com/aabouzaid/kustomize-plugin-merger/issues/7)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/aabouzaid/kustomize-plugin-merger/pulls)
+[![GitHub Release](https://img.shields.io/github/v/release/aabouzaid/kustomize-plugin-merger?logo=github)](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/releases)
+[![Docker](https://img.shields.io/badge/Docker-available-blue?logo=docker&logoColor=white)](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/pkgs/container/kustomize-generator-merger)
+[![Go Reference](https://pkg.go.dev/badge/github.com/DevOpsHiveHQ/kustomize-plugin-merger.svg)](https://pkg.go.dev/github.com/DevOpsHiveHQ/kustomize-plugin-merger)
+[![Renovate](https://img.shields.io/badge/Renovate-enabled-blue?logo=renovatebot)](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues/7)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/pulls)
 
 </div>
 
@@ -165,8 +165,8 @@ but it will follow the SemVer convention.
 ## Contributing
 
 All feedback and contributions are welcome. If you find any issues or want to contribute,
-please feel free to [fill an issue](https://github.com/aabouzaid/kustomize-plugin-merger/issues)
-or [create a PR](https://github.com/aabouzaid/kustomize-plugin-merger/pulls).
+please feel free to [fill an issue](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues)
+or [create a PR](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/pulls).
 
 
 ## License
