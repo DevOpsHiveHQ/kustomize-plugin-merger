@@ -6,7 +6,7 @@ import (
 	"sigs.k8s.io/kustomize/kyaml/fn/framework"
 	"sigs.k8s.io/kustomize/kyaml/kio"
 
-	"github.com/aabouzaid/kustomize-plugin-merger/pkg/merger"
+	"github.com/DevOpsHiveHQ/kustomize-plugin-merger/pkg/merger"
 )
 
 func main() {

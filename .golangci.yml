@@ -5,7 +5,7 @@ linters-settings:
   gocyclo:
     min-complexity: 15
   goimports:
-    local-prefixes: github.com/aabouzaid/kustomize-plugin-merger
+    local-prefixes: github.com/DevOpsHiveHQ/kustomize-plugin-merger
   govet:
     check-shadowing: true
   misspell:
