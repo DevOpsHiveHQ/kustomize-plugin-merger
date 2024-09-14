@@ -100,7 +100,7 @@ spec:
 ## Build
 
 ```shell
-kustomize build  --enable-alpha-plugins .
+kustomize build --enable-alpha-plugins .
 ```
 
 ## Output

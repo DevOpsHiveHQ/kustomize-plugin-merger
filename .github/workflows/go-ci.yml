@@ -47,7 +47,7 @@ jobs:
       artifacts-cache: true
       artifacts-cache-key: "dist-${{ github.run_id }}"
       artifacts-publish-ci: true
-      artifacts-identifier: "${{ github.event.number == 0 && format('main-{0}', github.sha) || format('pr-{0}', github.event.number) }}"
+      artifacts-identifier: "${{ github.event.number == 0 && 'snapshot' || format('pr-{0}', github.event.number) }}"
 
   upload:
     name: Upload Artifacts - ${{ matrix.os.name }}

@@ -32,6 +32,11 @@ jobs:
               "hidden": false
             },
             {
+              "type": "refactor",
+              "section": "Refactors",
+              "hidden": false
+            },
+            {
               "type": "fix",
               "section": "Bug Fixes",
               "hidden": false
