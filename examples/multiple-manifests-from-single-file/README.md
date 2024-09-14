@@ -150,7 +150,7 @@ spec:
 ## Build
 
 ```shell
-kustomize build  --enable-alpha-plugins --as-current-user .
+kustomize build  --enable-alpha-plugins .
 ```
 
 ## Output
