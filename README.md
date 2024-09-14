@@ -30,7 +30,7 @@ A Kustomize generator plugin to merge YAML files seamlessly for real-world use c
 - [Why](#why)
 - [Features](#features)
 - [Options](#options)
-- [Common use cases](#common-use-cases)
+- [Examples](#examples)
   - [1. Generate multiple manifests from a single base](#1-generate-multiple-manifests-from-a-single-base)
   - [2. Merge non-manifest files and store them into ConfigMap or Secret](#2-merge-non-manifest-files-and-store-them-into-configmap-or-secret)
   - [3. Merge lists in manifests without schema or a unique identifier](#3-merge-lists-in-manifests-without-schema-or-a-unique-identifier)
@@ -114,7 +114,7 @@ spec:
 ```
 
 
-## Common use cases
+## Examples
 
 This section shows a couple of use cases where Merger can help.
 
