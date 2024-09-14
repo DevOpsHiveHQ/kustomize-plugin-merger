@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.1.1](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/compare/v2.1.0...v2.1.1) (2024-09-14)
+
+
+### Refactors
+
+* run merger with non-root user by default ([2faee16](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/2faee16f4d9337738bc60b508f4cbbcede942e55))
+
+
+### Continuous Integration
+
+* publish temporary docker image ([cf83a24](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/cf83a248ad646611cfca79635c0990c3667d385b))
+* update golangci-lint-action version ([f25736e](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/f25736ed665e0e6e7b7898200f005e5123e4c6a9))
+
 ## [2.1.0](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/compare/v2.0.0...v2.1.0) (2024-08-20)
 
 
