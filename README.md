@@ -13,6 +13,8 @@ A Kustomize generator plugin to merge YAML files seamlessly for real-world use c
 
 </b></p>
 
+[![Awesome Kustomize](https://devopshive.net/badges/awesome-kustomize.svg)](https://github.com/DevOpsHiveHQ/awesome-kustomize)
+
 [![CI](https://img.shields.io/github/actions/workflow/status/aabouzaid/kustomize-plugin-merger/.github%2Fworkflows%2Fgo-ci.yml?logo=github&label=CI&color=31c653)](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/actions/workflows/go-ci.yml?query=branch%3Amain)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/aabouzaid/kustomize-plugin-merger/.github%2Fworkflows%2Fgo-ci.yml?logo=github&label=CodeQL&color=31c653)](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/actions/workflows/sec-codeql.yml?query=branch%3Amain)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/7815/badge)](https://www.bestpractices.dev/projects/7815)
