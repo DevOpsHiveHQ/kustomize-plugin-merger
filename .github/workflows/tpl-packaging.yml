@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       goreleaser-version:
-        default: latest
+        default: '~> v2'
         type: string
       goreleaser-args:
         required: true

@@ -42,7 +42,6 @@ jobs:
     uses: ./.github/workflows/tpl-packaging.yml
     secrets: inherit
     with:
-      goreleaser-version: 2
       goreleaser-args: "release --clean --snapshot"
       artifacts-cache: true
       artifacts-cache-key: "dist-${{ github.run_id }}"
