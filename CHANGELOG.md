@@ -1,5 +1,54 @@
 # Changelog
 
+## [3.0.0](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/compare/v2.1.1...v3.0.0) (2024-09-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename apiVersion group name ([#75](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues/75))
+
+### Features
+
+* first working version of merger ([6638182](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/66381828b698ea07ab1e51354814ec23138b9e52))
+* support ConfigMap and Secret as an output ([#34](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues/34)) ([62e552e](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/62e552e49738bedf7dcaf32d49e3ea6ef70caf5b))
+* support docker image arm64 arch ([#79](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues/79)) ([f23287d](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/f23287d9614e273fd006a8af89e9e8ea268dd56e))
+
+
+### Refactors
+
+* rename apiVersion group name ([#75](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues/75)) ([d61661b](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/d61661b12111a7f422535f20815cbee61aab4276))
+* run merger with non-root user by default ([2faee16](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/2faee16f4d9337738bc60b508f4cbbcede942e55))
+* use koanf/v2 ([740be30](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/740be3070f0c33f6d1c69408fe477fd06f8f0ea8))
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([c040f6d](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/c040f6d0d68b188006d14ea0b742868fdea6b815))
+* **deps:** update all non-major dependencies ([3f5c70c](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/3f5c70c33f2a89927f52292000cb18e3f280d790))
+* **deps:** update k8s.io/kube-openapi digest to a781456 ([c7a678c](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/c7a678c88af453270d0dfd063610294b4a8b0402))
+
+
+### Documentation
+
+* update the main readme and use cases ([65ead0e](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/65ead0e117b84c90046b4dbd63321df956a5c1e1))
+* use case - append CustomResources lists without schema ([8771624](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/8771624273db88c53e85b5391f9529c8066254b4))
+* use case - Generate multiple manifests from a single file ([db3c520](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/db3c520f098a67cd347b708f812d435fd16a338b))
+* use case - Organize long manifests into smaller ones ([01687c6](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/01687c6963bcb37db42b643ff93396e34221ff24))
+
+
+### Continuous Integration
+
+* add go release workflow ([66bc5a5](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/66bc5a5091a9d0a7eb52b243c733cdd82250226c))
+* go linter config and ci workflow ([#1](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues/1)) ([b822290](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/b82229069441234dc150b7798b04d8fa3ec2638a))
+* go releaser ([#2](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues/2)) ([fbf3086](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/fbf30869e25c33a58f3c2a2471c4b43df7b78b72))
+* publish temporary docker image ([cf83a24](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/cf83a248ad646611cfca79635c0990c3667d385b))
+* renovate for dependency update ([#4](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues/4)) ([cc82dcb](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/cc82dcb97aba379c309521103e118c0fe12fb3ae))
+* **security:** apply best practices by step security ([#8](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues/8)) ([9e78ebf](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/9e78ebfa14a5c40624c75b8a2cbc97beda1eb1e8))
+* **security:** codeql analysis workflow ([#3](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues/3)) ([942f62d](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/942f62d7b9b835d5cdefc203e9681604d8b3a509))
+* **security:** Scorecard security workflow ([0b07e13](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/0b07e13e19446a1c53a93a67ac49b84f736277eb))
+* unify build and release packages ([#26](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues/26)) ([8381945](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/8381945bd297b80431288d83a24ad3398404b6be))
+* update golangci-lint-action version ([f25736e](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/f25736ed665e0e6e7b7898200f005e5123e4c6a9))
+
 ## [2.1.1](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/compare/v2.1.0...v2.1.1) (2024-09-14)
 
 
