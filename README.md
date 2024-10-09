@@ -76,19 +76,19 @@ apiVersion: generators.kustomize.devopshive.net/v1alpha1
 kind: Merger
 metadata:
   name: merge
-    annotations:
-      # Containerized KRM function.
-      config.kubernetes.io/function: |
-        container:
-          image: ghcr.io/devopshivehq/kustomize-generator-merger
-          mounts:
-          - type: bind
-            src: ./
-            dst: /mnt
-      # Exec KRM functions.
-      # config.kubernetes.io/function: |
-      #   exec:
-      #     path: kustomize-plugin-merger
+  annotations:
+    # Containerized KRM function.
+    config.kubernetes.io/function: |
+      container:
+        image: ghcr.io/devopshivehq/kustomize-generator-merger
+        mounts:
+        - type: bind
+          src: ./
+          dst: /mnt
+    # Exec KRM functions.
+    # config.kubernetes.io/function: |
+    #   exec:
+    #     path: kustomize-plugin-merger
 spec:
   resources:
   - name: example
