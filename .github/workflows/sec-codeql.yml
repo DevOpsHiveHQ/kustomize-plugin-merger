@@ -22,7 +22,7 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+    - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
     - uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe # v4
       with:
         go-version-file: go.mod
@@ -38,11 +38,11 @@ jobs:
           ${{ runner.os }}-go-
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@e8b34a2aaa1d35eab0b758128337086bb22bc6bf # v2
+      uses: github/codeql-action/init@083cd45dc7d463f048a5d0975943f0e19e9c9378 # v2
       with:
         languages: go
     # Autobuild attempts to build any compiled languages.
     - name: Autobuild
-      uses: github/codeql-action/autobuild@e8b34a2aaa1d35eab0b758128337086bb22bc6bf # v2
+      uses: github/codeql-action/autobuild@083cd45dc7d463f048a5d0975943f0e19e9c9378 # v2
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@e8b34a2aaa1d35eab0b758128337086bb22bc6bf # v2
+      uses: github/codeql-action/analyze@083cd45dc7d463f048a5d0975943f0e19e9c9378 # v2

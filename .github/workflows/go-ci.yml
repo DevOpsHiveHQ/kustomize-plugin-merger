@@ -13,13 +13,13 @@ jobs:
     name: Lint And Test Code
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+    - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
     - uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe # v4
       with:
         go-version-file: go.mod
         cache: false
     - name: Run GolangCI linter
-      uses: golangci/golangci-lint-action@aaa42aa0628b4ae2578232a66b541047968fac86 # v6.1.0
+      uses: golangci/golangci-lint-action@971e284b6050e8a5849b72094c50ab08da042db8 # v6.1.1
       with:
         args: '--timeout=5m'
         skip-cache: true
@@ -71,14 +71,14 @@ jobs:
     - run: find dist
     # The upload-artifact action doesn't support multi upload 🤷‍♂️!
     - name: Upload Artifacts - AMD
-      uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3
+      uses: actions/upload-artifact@ff15f0306b3f739f7b6fd43fb5d26cd321bd4de5 # v3
       with:
         name: merger-${{ matrix.os.id }}-amd
         path: |
           dist/kustomize-plugin-merger_*_${{ matrix.os.id }}_amd*
           dist/*checksums.txt*
     - name: Upload Artifacts - ARM
-      uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3
+      uses: actions/upload-artifact@ff15f0306b3f739f7b6fd43fb5d26cd321bd4de5 # v3
       with:
         name: merger-${{ matrix.os.id }}-arm
         path: |

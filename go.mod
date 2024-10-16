@@ -1,8 +1,8 @@
 module github.com/DevOpsHiveHQ/kustomize-plugin-merger
 
-go 1.22.0
+go 1.22.7
 
-toolchain go1.23.0
+toolchain go1.23.2
 
 require (
 	dario.cat/mergo v1.0.1
@@ -10,9 +10,9 @@ require (
 	github.com/knadh/koanf/providers/file v0.1.0
 	github.com/knadh/koanf/v2 v2.1.1
 	github.com/stretchr/testify v1.9.0
-	k8s.io/apimachinery v0.31.0
-	k8s.io/kube-openapi v0.0.0-20240822171749-76de80e0abd9
-	sigs.k8s.io/kustomize/kyaml v0.17.2
+	k8s.io/apimachinery v0.31.1
+	k8s.io/kube-openapi v0.0.0-20241009091222-67ed5848f094
+	sigs.k8s.io/kustomize/kyaml v0.18.1
 )
 
 require (
