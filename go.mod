@@ -10,7 +10,7 @@ require (
 	github.com/knadh/koanf/providers/file v0.1.0
 	github.com/knadh/koanf/v2 v2.1.1
 	github.com/stretchr/testify v1.9.0
-	k8s.io/apimachinery v0.31.1
+	k8s.io/apimachinery v0.31.2
 	k8s.io/kube-openapi v0.0.0-20241009091222-67ed5848f094
 	sigs.k8s.io/kustomize/kyaml v0.18.1
 )
