@@ -431,6 +431,32 @@ func TestOutputConfigMap(t *testing.T) {
 				{"src01.3", "prom.yaml", "evaluation_interval", ""},
 			},
 		},
+		{
+			name: "Test ConfigMap output with overlay+annotations",
+			desc: "The number of the outputs in 'ConfigMap+overlay' should be the same as input sources",
+			actual: mergerResource{
+				Name: "test-output-configmap",
+				Output: resourceOutput{
+					Format: "configmap",
+					Annotations: map[string]string{
+						"kustomize.config.k8s.io/needs-hash": "true",
+					},
+					items: map[string]string{
+						"prom.yaml": `
+							global:
+								scrape_interval: 15s
+								evaluation_interval: 15s
+						`,
+					},
+				},
+			},
+			expected: []testMergeCase{
+				{"src01.1", "prom.yaml", "kind: ConfigMap", ""},
+				{"src01.2", "prom.yaml", "name: test-output-configmap", ""},
+				{"src01.3", "prom.yaml", "evaluation_interval", ""},
+				{"src01.4", "prom.yaml", "kustomize.config.k8s.io/needs-hash: \"true\"", ""},
+			},
+		},
 	}
 
 	for _, tt := range tests {
@@ -476,6 +502,32 @@ func TestOutputSecret(t *testing.T) {
 				{"src01.2", "prom.yaml", "kind: Secret", ""},
 				{"src01.2", "prom.yaml", "name: test-output-secret", ""},
 				{"src01.3", "prom.yaml", "CgkJCQkJCQlnbG9iYWw6CgkJCQkJCQkJc2NyYXBlX2ludGVydmFsOiAxNXMKCQkJCQkJCQ", ""},
+			},
+		},
+		{
+			name: "Test Secret output with overlay+annotations",
+			desc: "The number of the outputs in 'Secret+overlay' should be the same as input sources",
+			actual: mergerResource{
+				Name: "test-output-secret",
+				Output: resourceOutput{
+					Format: "secret",
+					Annotations: map[string]string{
+						"kustomize.config.k8s.io/needs-hash": "false",
+					},
+					items: map[string]string{
+						"prom.yaml": `
+							global:
+								scrape_interval: 15s
+								evaluation_interval: 15s
+						`,
+					},
+				},
+			},
+			expected: []testMergeCase{
+				{"src01.2", "prom.yaml", "kind: Secret", ""},
+				{"src01.2", "prom.yaml", "name: test-output-secret", ""},
+				{"src01.3", "prom.yaml", "CgkJCQkJCQlnbG9iYWw6CgkJCQkJCQkJc2NyYXBlX2ludGVydmFsOiAxNXMKCQkJCQkJCQ", ""},
+				{"src01.4", "prom.yaml", "kustomize.config.k8s.io/needs-hash: \"false\"", ""},
 			},
 		},
 	}
