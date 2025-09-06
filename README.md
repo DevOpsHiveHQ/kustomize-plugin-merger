@@ -113,10 +113,9 @@ spec:
     output:
       # Available options: raw,configmap,secret
       format: raw
-      #optional, add your custom annotations to a configmap or secret output
-      #annotations:
-      #  kustomize.config.k8s.io/needs-hash: "true"
-
+      # Optional: Add custom annotations to output manifest.
+      annotations:
+        app.kubernetes.io/created-by: "kustomize-merger"
 ```
 
 
