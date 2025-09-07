@@ -113,6 +113,9 @@ spec:
     output:
       # Available options: raw,configmap,secret
       format: raw
+      # Optional: Add custom annotations to output manifest.
+      annotations:
+        app.kubernetes.io/created-by: "kustomize-merger"
 ```
 
 

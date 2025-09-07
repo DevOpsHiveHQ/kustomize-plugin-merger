@@ -85,8 +85,9 @@ func (r *mergerResource) export() []*yaml.RNode {
 		rNode, err := yaml.FromMap(map[string]interface{}{
 			"apiVersion": "v1",
 			"kind":       "ConfigMap",
-			"metadata": map[string]string{
-				"name": r.Name,
+			"metadata": map[string]interface{}{
+				"name":        r.Name,
+				"annotations": r.Output.Annotations,
 			},
 		})
 		if err != nil {
@@ -101,8 +102,9 @@ func (r *mergerResource) export() []*yaml.RNode {
 		rNode, err := yaml.FromMap(map[string]interface{}{
 			"apiVersion": "v1",
 			"kind":       "Secret",
-			"metadata": map[string]string{
-				"name": r.Name,
+			"metadata": map[string]interface{}{
+				"name":        r.Name,
+				"annotations": r.Output.Annotations,
 			},
 		})
 		if err != nil {

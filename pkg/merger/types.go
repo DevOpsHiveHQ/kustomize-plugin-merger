@@ -106,6 +106,7 @@ const (
 )
 
 type resourceOutput struct {
-	Format resourceOutputFormat `yaml:"format" json:"format"`
-	items  map[string]string
+	Format      resourceOutputFormat `yaml:"format" json:"format"`
+	items       map[string]string
+	Annotations map[string]string `yaml:"annotations,omitempty" json:"annotations,omitempty"`
 }
