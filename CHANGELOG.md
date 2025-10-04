@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.0](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/compare/v2.1.1...v2.2.0) (2025-09-07)
+
+
+### Features
+
+* support annotations ([#91](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues/91)) ([88b5b0f](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/88b5b0f1343097e928c789b20301baecbbab6a4c))
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#89](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/issues/89)) ([d4e1029](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/commit/d4e1029237c945e031c1d359a2100c1f1f660350))
+
 ## [2.1.1](https://github.com/DevOpsHiveHQ/kustomize-plugin-merger/compare/v2.1.0...v2.1.1) (2024-09-14)
 
 
