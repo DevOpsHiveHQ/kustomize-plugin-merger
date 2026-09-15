@@ -1,4 +1,4 @@
-FROM ubuntu:latest@sha256:278628f08d4979fb9af9ead44277dbc9c92c2465922310916ad0c46ec9999295 as base
+FROM ubuntu:latest@sha256:513c074113a871b51a8d16ab445c88779d6452d937a164fb5cc479f32668a41d as base
 RUN useradd -u 1001 merger
 
 FROM scratch
